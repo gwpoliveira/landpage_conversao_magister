@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { MapPin, Phone, Mail, ShieldCheck, Cookie } from "lucide-react";
+import { MapPin, Phone, Mail, ShieldCheck, Cookie, ExternalLink } from "lucide-react";
 
 interface FooterProps {
   onOpenBooking: () => void;
@@ -121,8 +121,22 @@ export function Footer({
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-white/10 text-center text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
           <p>© 2026 Instituto Magister de Ensino. Todos os direitos reservados.</p>
+
+          <p className="flex items-center gap-1.5 text-slate-400">
+            <span>Desenvolvido por</span>
+            <a
+              href="https://gleiserwesley.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-magister-amber hover:text-white font-semibold transition inline-flex items-center gap-1 underline underline-offset-4"
+            >
+              <span>Gleiser Wesley</span>
+              <ExternalLink className="w-3 h-3 text-magister-amber" />
+            </a>
+          </p>
+
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={onOpenPrivacy}
