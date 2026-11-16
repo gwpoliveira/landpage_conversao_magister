@@ -14,8 +14,9 @@
 | **3. Prototipação Interativa de Alta Fidelidade** | `Next.js & Frontend Master` | 🟢 **ENTREGUE** | Protótipo interativo completo em `index.html`. |
 | **4. Frontend Next.js 15 (Produção)** | `Next.js & Frontend Master` | 🟢 **CONSTRUÍDO & COMPILADO COM SUCESSO** | App Router, TypeScript, Tailwind, Lucide React, static prerender (build 100% verde). |
 | **5. QA & Auditoria de Segurança (Guardian)** | `Guardian (Segurança)` / `QA` | 🟢 **APROVADO** | Varredura de segredos limpa, .gitignore estrito, validações Zod e sanitização de inputs. |
-| **6. Deploy VPS Bare-Metal (Zero Docker)** | `VPS Bare-Metal Sysadmin` | 🟢 **CONFIGURADO & PRONTO** | Porta 3020 alocada (sem conflitos), PM2 configurado, Nginx e deploy.sh gerados. |
-| **7. Domínio & SSL** | `VPS Bare-Metal Sysadmin` | 🟡 **PRONTO PARA VINCULAR** | Alvo: `estude.institutomagisterpi.com.br` com Certbot automático. |
+| **6. Repositório Remoto Git (GitHub)** | `Maestro` / `Guardian` | 🟢 **PUBLICADO & ATIVO** | Repositório: `https://github.com/gwpoliveira/landpage_conversao_magister` (branch `main`). |
+| **7. Deploy VPS Bare-Metal (Zero Docker)** | `VPS Bare-Metal Sysadmin` | 🟢 **SCRIPTS PRONTOS** | Porta 3020 alocada, `deploy.sh` e `update.sh` automatizados para PM2 e Nginx. |
+| **8. Domínio & SSL** | `VPS Bare-Metal Sysadmin` | 🟡 **PRONTO PARA EXECUÇÃO** | Alvo: `estude.institutomagisterpi.com.br` com Certbot automático. |
 
 ---
 
