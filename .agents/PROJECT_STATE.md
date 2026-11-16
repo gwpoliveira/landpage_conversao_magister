@@ -13,9 +13,9 @@
 | **2. Identidade Visual (Cores & Tipologia)** | `Next.js & Frontend Master` | 🟢 **CALIBRADO** | Cores oficiais extraídas de `logo.png`: Azul `#134889`, Amarelo Âmbar `#F5AC1D`. |
 | **3. Prototipação Interativa de Alta Fidelidade** | `Next.js & Frontend Master` | 🟢 **ENTREGUE** | Protótipo interativo completo em `index.html`. |
 | **4. Frontend Next.js 15 (Produção)** | `Next.js & Frontend Master` | 🟢 **CONSTRUÍDO & COMPILADO COM SUCESSO** | App Router, TypeScript, Tailwind, Lucide React, static prerender (build 100% verde). |
-| **5. QA & Testes Automatizados** | `QA & Test Automation` | 🟡 **PLANEJADO** | Validação de formulários Zod, schema SEO e acessibilidade. |
-| **6. Selo de Segurança (OWASP)** | `Guardian (Segurança)` | 🟡 **EM VALIDAÇÃO** | Sanitização Zod e LGPD sem credenciais expostas. |
-| **7. Deploy & VPS (Zero Docker)** | `VPS Bare-Metal Sysadmin` | ⚪ **PRONTO PARA DEPLOY** | Nginx + PM2 na porta padrão com SSL Certbot. |
+| **5. QA & Auditoria de Segurança (Guardian)** | `Guardian (Segurança)` / `QA` | 🟢 **APROVADO** | Varredura de segredos limpa, .gitignore estrito, validações Zod e sanitização de inputs. |
+| **6. Deploy VPS Bare-Metal (Zero Docker)** | `VPS Bare-Metal Sysadmin` | 🟢 **CONFIGURADO & PRONTO** | Porta 3020 alocada (sem conflitos), PM2 configurado, Nginx e deploy.sh gerados. |
+| **7. Domínio & SSL** | `VPS Bare-Metal Sysadmin` | 🟡 **PRONTO PARA VINCULAR** | Alvo: `estude.institutomagisterpi.com.br` com Certbot automático. |
 
 ---
 
