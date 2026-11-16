@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   CalendarCheck,
   MessageCircle,
@@ -33,41 +34,96 @@ export function Hero({ onOpenBooking }: HeroProps) {
       <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none" />
 
       {/* Orbs de Aurora Gradiente Fluida em 60fps (Luz Âmbar Solar + Azul Real Magister) */}
-      <div className="absolute -top-32 -right-24 w-[32rem] h-[32rem] bg-gradient-to-br from-magister-amber/35 to-amber-600/20 rounded-full blur-[100px] pointer-events-none animate-orb-1" />
-      <div className="absolute top-1/3 -left-32 w-[34rem] h-[34rem] bg-gradient-to-tr from-magister-blue/50 to-blue-400/25 rounded-full blur-[120px] pointer-events-none animate-orb-2" />
-      <div className="absolute -bottom-36 right-1/4 w-[28rem] h-[28rem] bg-gradient-to-r from-magister-amber/25 via-magister-blue/30 to-transparent rounded-full blur-[90px] pointer-events-none animate-orb-3" />
+      <motion.div
+        animate={{
+          x: [0, 60, -30, 0],
+          y: [0, -40, 30, 0],
+          scale: [1, 1.2, 0.95, 1],
+        }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-32 -right-24 w-[32rem] h-[32rem] bg-gradient-to-br from-magister-amber/35 to-amber-600/20 rounded-full blur-[100px] pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          x: [0, -50, 40, 0],
+          y: [0, 50, -30, 0],
+          scale: [1, 0.9, 1.25, 1],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/3 -left-32 w-[34rem] h-[34rem] bg-gradient-to-tr from-magister-blue/50 to-blue-400/25 rounded-full blur-[120px] pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          x: [0, 40, -40, 0],
+          y: [0, -30, 20, 0],
+          scale: [1, 1.15, 0.9, 1],
+        }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-36 right-1/4 w-[28rem] h-[28rem] bg-gradient-to-r from-magister-amber/25 via-magister-blue/30 to-transparent rounded-full blur-[90px] pointer-events-none"
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Copy Column (7 cols) */}
-          <div className="lg:col-span-7 text-center lg:text-left space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-magister-amber backdrop-blur-md animate-shimmer shadow-sm">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 text-center lg:text-left space-y-6"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-magister-amber backdrop-blur-md animate-shimmer shadow-sm"
+            >
               <Sparkles className="w-3.5 h-3.5 text-magister-amber" />
               <span>Matrículas Abertas • Teresina - Piauí</span>
-            </div>
+            </motion.div>
 
-            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12]">
-              Onde o <span className="text-magister-amber relative inline-block">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12]"
+            >
+              Onde o{" "}
+              <span className="text-magister-amber relative inline-block">
                 acolhimento
                 <span className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-magister-amber to-transparent opacity-80" />
-              </span> transforma o aprendizado e o futuro acontece.
-            </h1>
+              </span>{" "}
+              transforma o aprendizado e o futuro acontece.
+            </motion.h1>
 
-            <p className="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
+              className="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed"
+            >
               Da <strong className="text-white font-semibold">Educação Infantil</strong> ao{" "}
               <strong className="text-white font-semibold">Ensino Médio de Alta Performance</strong>. No Instituto Magister de Ensino, seu filho constrói autonomia, inteligência emocional e a preparação sólida para o ENEM e para a vida.
-            </p>
+            </motion.p>
 
             {/* CTAs Duplos */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-              <button
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.7 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4"
+            >
+              <motion.button
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={() => onOpenBooking()}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-heading font-bold text-base text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-lg hover:shadow-glow-amber transition-all transform hover:-translate-y-0.5 animate-shimmer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-heading font-bold text-base text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-lg hover:shadow-glow-amber transition-all animate-shimmer"
               >
                 <CalendarCheck className="w-5 h-5" />
                 <span>Agendar Visita Guiada</span>
-              </button>
-              <a
+              </motion.button>
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20quero%20conversar%20com%20um%20orientador%20do%20Instituto%20Magister%20de%20Ensino."
                 target="_blank"
                 rel="noopener noreferrer"
@@ -75,11 +131,16 @@ export function Hero({ onOpenBooking }: HeroProps) {
               >
                 <MessageCircle className="w-5 h-5 text-magister-whatsapp" />
                 <span>Falar com Orientador</span>
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
 
             {/* Badges de Confiança */}
-            <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-300">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-300"
+            >
               <div className="flex items-center gap-1.5">
                 <div className="flex text-magister-amber">
                   {[...Array(5)].map((_, i) => (
@@ -96,11 +157,16 @@ export function Hero({ onOpenBooking }: HeroProps) {
                 <Award className="w-4 h-4 text-magister-amber" />
                 <span>Top Desempenho ENEM Piauí</span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Form Column (5 cols) */}
-          <div className="lg:col-span-5 relative">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.85, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative"
+          >
             <div className="relative mx-auto max-w-md bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl text-slate-900 border border-white/30">
               <div className="flex items-center justify-between pb-6 border-b border-slate-100">
                 <div className="flex items-center gap-3">
@@ -172,20 +238,27 @@ export function Hero({ onOpenBooking }: HeroProps) {
                     <option value="Turno Integral">Período Integral / Contraturno</option>
                   </select>
                 </div>
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   type="submit"
                   className="w-full py-3.5 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-md transition flex items-center justify-center gap-2 animate-shimmer"
                 >
                   <span>Receber Contato & Agendar</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </motion.button>
                 <p className="text-[11px] text-center text-slate-400">
                   🔒 Seus dados estão seguros e protegidos pela LGPD.
                 </p>
               </form>
             </div>
 
-            <div className="hidden sm:flex items-center gap-3 absolute -bottom-6 -left-6 bg-magister-dark/95 backdrop-blur-md text-white p-4 rounded-2xl border border-white/15 shadow-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.7 }}
+              className="hidden sm:flex items-center gap-3 absolute -bottom-6 -left-6 bg-magister-dark/95 backdrop-blur-md text-white p-4 rounded-2xl border border-white/15 shadow-xl"
+            >
               <div className="w-10 h-10 rounded-xl bg-magister-amber flex items-center justify-center text-magister-navy font-bold">
                 <Trophy className="w-5 h-5" />
               </div>
@@ -195,8 +268,8 @@ export function Hero({ onOpenBooking }: HeroProps) {
                   +98% em Universidades Públicas
                 </p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

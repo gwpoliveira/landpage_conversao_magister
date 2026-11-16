@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 interface FaqItem {
@@ -46,39 +47,63 @@ export function Faq() {
   return (
     <section id="faq" className="py-20 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <span className="inline-block px-3 py-1 rounded-full bg-magister-amberLight text-magister-amber font-heading font-bold text-xs uppercase tracking-wider mb-3">
             Tire suas Dúvidas
           </span>
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-magister-navy tracking-tight">
             Perguntas Frequentes de Pais e Responsáveis
           </h2>
-        </div>
+        </motion.div>
 
         <div className="space-y-4">
-          {faqData.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white rounded-2xl border border-slate-200 overflow-hidden"
-            >
-              <button
-                onClick={() => toggle(item.id)}
-                className="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition"
+          {faqData.map((item, idx) => {
+            const isOpen = openId === item.id;
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm"
               >
-                <span>{item.question}</span>
-                <ChevronDown
-                  className={`w-5 h-5 text-slate-400 transition-transform ${
-                    openId === item.id ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {openId === item.id && (
-                <div className="px-6 pb-4 text-sm text-slate-600 leading-relaxed">
-                  {item.answer}
-                </div>
-              )}
-            </div>
-          ))}
+                <button
+                  onClick={() => toggle(item.id)}
+                  className="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition"
+                >
+                  <span>{item.question}</span>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <ChevronDown className="w-5 h-5 text-slate-400" />
+                  </motion.div>
+                </button>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-4 text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-3">
+                        {item.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

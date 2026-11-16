@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import {
   HeartHandshake,
   Shield,
@@ -9,12 +12,45 @@ import {
 } from "lucide-react";
 
 export function Diferenciais() {
+  const cards = [
+    {
+      icon: Laptop,
+      color: "text-magister-blue",
+      title: "Tecnologia & Cultura Maker",
+      desc: "Salas interativas com lousas digitais, programação e robótica integrada ao currículo regular.",
+    },
+    {
+      icon: Globe,
+      color: "text-magister-amber",
+      title: "Programa de Bilinguismo",
+      desc: "Imersão prática na língua inglesa com foco em conversação natural e preparação para certificações internacionais.",
+    },
+    {
+      icon: Dumbbell,
+      color: "text-emerald-600",
+      title: "Esportes & Socialização",
+      desc: "Futsal, vôlei, basquete, judô e dança, desenvolvendo cooperação, saúde física e resiliência.",
+    },
+    {
+      icon: Users,
+      color: "text-magister-blue",
+      title: "Comunicação Escola-Família",
+      desc: "Aplicativo escolar próprio com boletim em tempo real, recados, frequência e canal direto com a coordenação.",
+    },
+  ];
+
   return (
     <section id="diferenciais" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Texto explicativo */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-6"
+          >
             <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-magister-blue font-heading font-bold text-xs uppercase tracking-wider">
               Por que o Instituto Magister?
             </span>
@@ -67,46 +103,32 @@ export function Diferenciais() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Cards visuais */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition">
-              <Laptop className="w-8 h-8 text-magister-blue mb-4" />
-              <h4 className="font-heading font-bold text-lg text-magister-navy">
-                Tecnologia & Cultura Maker
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2">
-                Salas interativas com lousas digitais, programação e robótica integrada ao currículo regular.
-              </p>
-            </div>
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition">
-              <Globe className="w-8 h-8 text-magister-amber mb-4" />
-              <h4 className="font-heading font-bold text-lg text-magister-navy">
-                Programa de Bilinguismo
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2">
-                Imersão prática na língua inglesa com foco em conversação natural e preparação para certificações internacionais.
-              </p>
-            </div>
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition">
-              <Dumbbell className="w-8 h-8 text-emerald-600 mb-4" />
-              <h4 className="font-heading font-bold text-lg text-magister-navy">
-                Esportes & Socialização
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2">
-                Futsal, vôlei, basquete, judô e dança, desenvolvendo cooperação, saúde física e resiliência.
-              </p>
-            </div>
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition">
-              <Users className="w-8 h-8 text-magister-blue mb-4" />
-              <h4 className="font-heading font-bold text-lg text-magister-navy">
-                Comunicação Escola-Família
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2">
-                Aplicativo escolar próprio com boletim em tempo real, recados, frequência e canal direto com a coordenação.
-              </p>
-            </div>
+            {cards.map((card, idx) => {
+              const Icon = card.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                  className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition shadow-sm"
+                >
+                  <Icon className={`w-8 h-8 ${card.color} mb-4`} />
+                  <h4 className="font-heading font-bold text-lg text-magister-navy">
+                    {card.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                    {card.desc}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>

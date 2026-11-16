@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Send, Check, MessageCircle } from "lucide-react";
 
 export function MultiStepBooking() {
@@ -31,7 +32,7 @@ export function MultiStepBooking() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mensagem = `Olá, gostaria de agendar uma visita ao Instituto Magister!%0A%0A*Responsável:* ${encodeURIComponent(
+    const mensagem = `Olá, gostaria de agendar uma visita ao Instituto Magister de Ensino!%0A%0A*Responsável:* ${encodeURIComponent(
       nome
     )}%0A*WhatsApp:* ${encodeURIComponent(
       whatsapp
@@ -62,7 +63,13 @@ export function MultiStepBooking() {
       className="py-20 bg-gradient-to-b from-magister-navy to-magister-dark text-white relative"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10"
+        >
           <span className="inline-block px-3 py-1 rounded-full bg-magister-amber/20 text-magister-amber font-heading font-bold text-xs uppercase tracking-wider mb-2">
             Passo Decisivo
           </span>
@@ -72,9 +79,15 @@ export function MultiStepBooking() {
           <p className="text-slate-300 text-sm sm:text-base mt-2">
             Conheça de perto as salas, a equipe pedagógica e as condições especiais para matrículas 2026/2027.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="bg-white text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border border-white/10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-white text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border border-white/10"
+        >
           {/* Progress Badges */}
           {!isSubmitted && (
             <div className="flex items-center justify-between mb-8 max-w-xs mx-auto">
@@ -127,236 +140,270 @@ export function MultiStepBooking() {
 
           {!isSubmitted ? (
             <form onSubmit={handleSubmit}>
-              {/* STEP 1 */}
-              {step === 1 && (
-                <div className="space-y-4">
-                  <h4 className="font-heading font-bold text-base text-magister-navy border-b border-slate-100 pb-2">
-                    Passo 1: Seus dados de contato
-                  </h4>
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Nome Completo do Responsável *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={nome}
-                      onChange={(e) => setNome(e.target.value)}
-                      placeholder="Digite seu nome..."
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue"
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <AnimatePresence mode="wait">
+                {/* STEP 1 */}
+                {step === 1 && (
+                  <motion.div
+                    key="step-1"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4"
+                  >
+                    <h4 className="font-heading font-bold text-base text-magister-navy border-b border-slate-100 pb-2">
+                      Passo 1: Seus dados de contato
+                    </h4>
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        WhatsApp com DDD (Ex: 86) *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        value={whatsapp}
-                        onChange={(e) => setWhatsapp(e.target.value)}
-                        placeholder="(86) 99999-9999"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        E-mail Principal
-                      </label>
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="seuemail@exemplo.com"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue"
-                      />
-                    </div>
-                  </div>
-                  <div className="pt-4 flex justify-end">
-                    <button
-                      type="button"
-                      onClick={handleNext}
-                      className="px-6 py-3 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2"
-                    >
-                      <span>Continuar</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* STEP 2 */}
-              {step === 2 && (
-                <div className="space-y-4">
-                  <h4 className="font-heading font-bold text-base text-magister-navy border-b border-slate-100 pb-2">
-                    Passo 2: Informações do Aluno
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Nome do(a) Filho(a) ou Dependente
+                        Nome Completo do Responsável *
                       </label>
                       <input
                         type="text"
-                        value={nomeAluno}
-                        onChange={(e) => setNomeAluno(e.target.value)}
-                        placeholder="Nome do aluno..."
+                        required
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                        placeholder="Digite seu nome..."
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue"
                       />
                     </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-700 mb-1">
+                          WhatsApp com DDD (Ex: 86) *
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          value={whatsapp}
+                          onChange={(e) => setWhatsapp(e.target.value)}
+                          placeholder="(86) 99999-9999"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-700 mb-1">
+                          E-mail Principal
+                        </label>
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="seuemail@exemplo.com"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue"
+                        />
+                      </div>
+                    </div>
+                    <div className="pt-4 flex justify-end">
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        type="button"
+                        onClick={handleNext}
+                        className="px-6 py-3 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2"
+                      >
+                        <span>Continuar</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </motion.button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* STEP 2 */}
+                {step === 2 && (
+                  <motion.div
+                    key="step-2"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4"
+                  >
+                    <h4 className="font-heading font-bold text-base text-magister-navy border-b border-slate-100 pb-2">
+                      Passo 2: Informações do Aluno
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-700 mb-1">
+                          Nome do(a) Filho(a) ou Dependente
+                        </label>
+                        <input
+                          type="text"
+                          value={nomeAluno}
+                          onChange={(e) => setNomeAluno(e.target.value)}
+                          placeholder="Nome do aluno..."
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-700 mb-1">
+                          Série / Ciclo Pretendido *
+                        </label>
+                        <select
+                          required
+                          value={serie}
+                          onChange={(e) => setSerie(e.target.value)}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue text-slate-700"
+                        >
+                          <option value="Educação Infantil (2 a 5 anos)">
+                            Educação Infantil (2 a 5 anos)
+                          </option>
+                          <option value="Ensino Fundamental I (1º ao 5º ano)">
+                            Ensino Fundamental I (1º ao 5º ano)
+                          </option>
+                          <option value="Ensino Fundamental II (6º ao 9º ano)">
+                            Ensino Fundamental II (6º ao 9º ano)
+                          </option>
+                          <option value="Ensino Médio & Pré-Vestibular">
+                            Ensino Médio & Pré-Vestibular
+                          </option>
+                          <option value="Turno Integral">Turno Integral / Contraturno</option>
+                        </select>
+                      </div>
+                    </div>
                     <div>
                       <label className="block text-xs font-semibold text-slate-700 mb-1">
-                        Série / Ciclo Pretendido *
+                        Turno de Preferência
                       </label>
-                      <select
-                        required
-                        value={serie}
-                        onChange={(e) => setSerie(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue text-slate-700"
+                      <div className="grid grid-cols-3 gap-3">
+                        {["Manhã", "Tarde", "Integral"].map((t) => (
+                          <label
+                            key={t}
+                            className={`flex items-center gap-2 p-3 rounded-xl border text-xs font-medium cursor-pointer transition ${
+                              turno === t
+                                ? "border-magister-blue bg-blue-50/50 text-magister-blue"
+                                : "border-slate-200 hover:bg-slate-50 text-slate-700"
+                            }`}
+                          >
+                            <input
+                              type="radio"
+                              name="turno"
+                              value={t}
+                              checked={turno === t}
+                              onChange={() => setTurno(t)}
+                              className="text-magister-blue focus:ring-magister-blue"
+                            />
+                            <span>{t}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="pt-4 flex justify-between">
+                      <button
+                        type="button"
+                        onClick={handlePrev}
+                        className="px-5 py-3 rounded-xl font-heading font-medium text-sm text-slate-600 bg-slate-100 hover:bg-slate-200 transition"
                       >
-                        <option value="Educação Infantil (2 a 5 anos)">
-                          Educação Infantil (2 a 5 anos)
-                        </option>
-                        <option value="Ensino Fundamental I (1º ao 5º ano)">
-                          Ensino Fundamental I (1º ao 5º ano)
-                        </option>
-                        <option value="Ensino Fundamental II (6º ao 9º ano)">
-                          Ensino Fundamental II (6º ao 9º ano)
-                        </option>
-                        <option value="Ensino Médio & Pré-Vestibular">
-                          Ensino Médio & Pré-Vestibular
-                        </option>
-                        <option value="Turno Integral">Turno Integral / Contraturno</option>
-                      </select>
+                        Voltar
+                      </button>
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        type="button"
+                        onClick={handleNext}
+                        className="px-6 py-3 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2"
+                      >
+                        <span>Continuar</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </motion.button>
                     </div>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Turno de Preferência
-                    </label>
-                    <div className="grid grid-cols-3 gap-3">
-                      {["Manhã", "Tarde", "Integral"].map((t) => (
-                        <label
-                          key={t}
-                          className={`flex items-center gap-2 p-3 rounded-xl border text-xs font-medium cursor-pointer transition ${
-                            turno === t
-                              ? "border-magister-blue bg-blue-50/50 text-magister-blue"
-                              : "border-slate-200 hover:bg-slate-50 text-slate-700"
-                          }`}
-                        >
-                          <input
-                            type="radio"
-                            name="turno"
-                            value={t}
-                            checked={turno === t}
-                            onChange={() => setTurno(t)}
-                            className="text-magister-blue focus:ring-magister-blue"
-                          />
-                          <span>{t}</span>
-                        </label>
-                      ))}
+                  </motion.div>
+                )}
+
+                {/* STEP 3 */}
+                {step === 3 && (
+                  <motion.div
+                    key="step-3"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4"
+                  >
+                    <h4 className="font-heading font-bold text-base text-magister-navy border-b border-slate-100 pb-2">
+                      Passo 3: Como prefere ser atendido?
+                    </h4>
+                    <div className="space-y-3">
+                      <label
+                        className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition ${
+                          tipoAtendimento === "visita_presencial"
+                            ? "border-magister-blue bg-blue-50/40"
+                            : "border-slate-200 hover:border-slate-300"
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="atendimento"
+                          value="visita_presencial"
+                          checked={tipoAtendimento === "visita_presencial"}
+                          onChange={() => setTipoAtendimento("visita_presencial")}
+                          className="mt-1 text-magister-blue focus:ring-magister-blue"
+                        />
+                        <div>
+                          <p className="font-heading font-bold text-sm text-magister-navy">
+                            Quero agendar uma visita presencial guiada
+                          </p>
+                          <p className="text-xs text-slate-500">
+                            Conhecer as instalações, os professores e a coordenação pessoalmente.
+                          </p>
+                        </div>
+                      </label>
+
+                      <label
+                        className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition ${
+                          tipoAtendimento === "whatsapp_online"
+                            ? "border-magister-blue bg-blue-50/40"
+                            : "border-slate-200 hover:border-slate-300"
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="atendimento"
+                          value="whatsapp_online"
+                          checked={tipoAtendimento === "whatsapp_online"}
+                          onChange={() => setTipoAtendimento("whatsapp_online")}
+                          className="mt-1 text-magister-blue focus:ring-magister-blue"
+                        />
+                        <div>
+                          <p className="font-heading font-bold text-sm text-magister-navy">
+                            Quero atendimento consultivo pelo WhatsApp
+                          </p>
+                          <p className="text-xs text-slate-500">
+                            Receber valores, grade curricular e tirar dúvidas com um consultor online.
+                          </p>
+                        </div>
+                      </label>
                     </div>
-                  </div>
-                  <div className="pt-4 flex justify-between">
-                    <button
-                      type="button"
-                      onClick={handlePrev}
-                      className="px-5 py-3 rounded-xl font-heading font-medium text-sm text-slate-600 bg-slate-100 hover:bg-slate-200 transition"
-                    >
-                      Voltar
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleNext}
-                      className="px-6 py-3 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2"
-                    >
-                      <span>Continuar</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              )}
 
-              {/* STEP 3 */}
-              {step === 3 && (
-                <div className="space-y-4">
-                  <h4 className="font-heading font-bold text-base text-magister-navy border-b border-slate-100 pb-2">
-                    Passo 3: Como prefere ser atendido?
-                  </h4>
-                  <div className="space-y-3">
-                    <label
-                      className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition ${
-                        tipoAtendimento === "visita_presencial"
-                          ? "border-magister-blue bg-blue-50/40"
-                          : "border-slate-200 hover:border-slate-300"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="atendimento"
-                        value="visita_presencial"
-                        checked={tipoAtendimento === "visita_presencial"}
-                        onChange={() => setTipoAtendimento("visita_presencial")}
-                        className="mt-1 text-magister-blue focus:ring-magister-blue"
-                      />
-                      <div>
-                        <p className="font-heading font-bold text-sm text-magister-navy">
-                          Quero agendar uma visita presencial guiada
-                        </p>
-                        <p className="text-xs text-slate-500">
-                          Conhecer as instalações, os professores e a coordenação pessoalmente.
-                        </p>
-                      </div>
-                    </label>
-
-                    <label
-                      className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition ${
-                        tipoAtendimento === "whatsapp_online"
-                          ? "border-magister-blue bg-blue-50/40"
-                          : "border-slate-200 hover:border-slate-300"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="atendimento"
-                        value="whatsapp_online"
-                        checked={tipoAtendimento === "whatsapp_online"}
-                        onChange={() => setTipoAtendimento("whatsapp_online")}
-                        className="mt-1 text-magister-blue focus:ring-magister-blue"
-                      />
-                      <div>
-                        <p className="font-heading font-bold text-sm text-magister-navy">
-                          Quero atendimento consultivo pelo WhatsApp
-                        </p>
-                        <p className="text-xs text-slate-500">
-                          Receber valores, grade curricular e tirar dúvidas com um consultor online.
-                        </p>
-                      </div>
-                    </label>
-                  </div>
-
-                  <div className="pt-4 flex justify-between">
-                    <button
-                      type="button"
-                      onClick={handlePrev}
-                      className="px-5 py-3 rounded-xl font-heading font-medium text-sm text-slate-600 bg-slate-100 hover:bg-slate-200 transition"
-                    >
-                      Voltar
-                    </button>
-                    <button
-                      type="submit"
-                      className="px-8 py-3.5 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-lg hover:shadow-glow-amber transition flex items-center gap-2"
-                    >
-                      <Send className="w-4 h-4" />
-                      <span>Finalizar e Enviar Agendamento</span>
-                    </button>
-                  </div>
-                </div>
-              )}
+                    <div className="pt-4 flex justify-between">
+                      <button
+                        type="button"
+                        onClick={handlePrev}
+                        className="px-5 py-3 rounded-xl font-heading font-medium text-sm text-slate-600 bg-slate-100 hover:bg-slate-200 transition"
+                      >
+                        Voltar
+                      </button>
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        type="submit"
+                        className="px-8 py-3.5 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-lg hover:shadow-glow-amber transition flex items-center gap-2"
+                      >
+                        <Send className="w-4 h-4" />
+                        <span>Finalizar e Enviar Agendamento</span>
+                      </motion.button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </form>
           ) : (
-            <div className="text-center py-8 space-y-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-center py-8 space-y-4"
+            >
               <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                 <Check className="w-8 h-8" />
               </div>
@@ -367,7 +414,9 @@ export function MultiStepBooking() {
                 Nossa equipe de orientação pedagógica já recebeu sua solicitação e entrará em contato pelo WhatsApp informado nas próximas horas.
               </p>
               <div className="pt-4">
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -375,11 +424,11 @@ export function MultiStepBooking() {
                 >
                   <MessageCircle className="w-5 h-5" />
                   <span>Abrir WhatsApp da Secretaria Agora</span>
-                </a>
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
