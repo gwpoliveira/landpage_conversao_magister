@@ -1013,10 +1013,21 @@
 
       <div class="pt-8 border-t border-white/10 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p>© 2026 Instituto Magister de Ensino. Todos os direitos reservados.</p>
-        <p class="flex items-center gap-4">
-          <a href="#" class="hover:underline">Privacidade & LGPD</a>
-          <a href="#" class="hover:underline">Termos de Uso</a>
-        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <button onclick="openPrivacyModal()" class="hover:text-magister-amber transition flex items-center gap-1">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            <span>Privacidade & LGPD</span>
+          </button>
+          <span class="text-white/20">•</span>
+          <button onclick="openTermsModal()" class="hover:text-magister-amber transition">
+            Termos de Uso
+          </button>
+          <span class="text-white/20">•</span>
+          <button onclick="openCookieConfig()" class="hover:text-magister-amber transition flex items-center gap-1">
+            <i data-lucide="cookie" class="w-3.5 h-3.5"></i>
+            <span>Preferências de Cookies</span>
+          </button>
+        </div>
       </div>
     </div>
   </footer>
@@ -1077,10 +1088,270 @@
     </div>
   </div>
 
+  <!-- BANNER DE COOKIES LGPD -->
+  <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 sm:left-auto sm:right-6 sm:max-w-md z-50 bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-slate-200 text-slate-800 hidden">
+    <div class="flex items-start gap-3">
+      <div class="w-10 h-10 rounded-xl bg-magister-amberLight text-magister-amber flex items-center justify-center shrink-0">
+        <i data-lucide="cookie" class="w-5 h-5"></i>
+      </div>
+      <div class="space-y-1">
+        <h4 class="font-heading font-bold text-sm text-magister-navy flex items-center gap-2">
+          <span>Controle de Privacidade & Cookies</span>
+          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-magister-blue uppercase">LGPD</span>
+        </h4>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Utilizamos cookies essenciais para o funcionamento seguro da página e tecnologias semelhantes para personalizar conteúdos e analisar o tráfego institucional, de acordo com nossa 
+          <button onclick="openPrivacyModal()" class="text-magister-blue font-semibold underline hover:text-magister-dark">Política de Privacidade</button> e 
+          <button onclick="openTermsModal()" class="text-magister-blue font-semibold underline hover:text-magister-dark">Termos de Uso</button>.
+        </p>
+      </div>
+    </div>
+    <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+      <button onclick="openCookieConfig()" class="text-xs font-semibold text-slate-600 hover:text-magister-blue flex items-center gap-1.5 transition py-1.5">
+        <i data-lucide="settings" class="w-3.5 h-3.5"></i>
+        <span>Configurar</span>
+      </button>
+      <div class="flex items-center gap-2">
+        <button onclick="acceptEssentialCookies()" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition">
+          Apenas Essenciais
+        </button>
+        <button onclick="acceptAllCookies()" class="px-4 py-2 rounded-xl text-xs font-heading font-bold text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-sm transition">
+          Aceitar Todos
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE CONFIGURAÇÃO DE COOKIES -->
+  <div id="cookie-config-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative text-slate-800">
+      <button onclick="closeCookieConfig()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-magister-blue flex items-center justify-center">
+          <i data-lucide="shield" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="font-heading font-extrabold text-lg text-magister-navy">Preferências de Cookies</h3>
+          <p class="text-xs text-slate-500">Gerencie como seus dados são tratados de acordo com a LGPD</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center justify-between mb-1">
+            <h4 class="font-heading font-bold text-sm text-magister-navy">Cookies Essenciais & Segurança</h4>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Sempre Ativo</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Necessários para o funcionamento seguro da página, proteção contra envio de spam nos formulários e armazenamento do consentimento.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center justify-between mb-1">
+            <h4 class="font-heading font-bold text-sm text-magister-navy">Cookies Analíticos & Desempenho</h4>
+            <input type="checkbox" id="cookie-analytics" checked class="w-4 h-4 text-magister-blue rounded border-slate-300 focus:ring-magister-blue cursor-pointer" />
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Permitem mensurar de forma anônima as visitas e as fontes de tráfego para aprimorar a experiência das famílias.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center justify-between mb-1">
+            <h4 class="font-heading font-bold text-sm text-magister-navy">Cookies de Marketing & Conversão</h4>
+            <input type="checkbox" id="cookie-marketing" checked class="w-4 h-4 text-magister-amber rounded border-slate-300 focus:ring-magister-amber cursor-pointer" />
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Utilizados para veicular anúncios relevantes sobre as matrículas do Instituto Magister em redes sociais e buscadores.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+        <button onclick="acceptAllCookies()" class="text-xs font-semibold text-slate-600 hover:text-magister-blue">
+          Aceitar Todos
+        </button>
+        <button onclick="saveCustomCookies()" class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs sm:text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2 shadow-sm">
+          <i data-lucide="check" class="w-4 h-4"></i>
+          <span>Salvar Preferências</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE POLÍTICA DE PRIVACIDADE & LGPD -->
+  <div id="privacy-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative text-slate-800 flex flex-col max-h-[85vh]">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-magister-blue flex items-center justify-center">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-extrabold text-lg sm:text-xl text-magister-navy">Política de Privacidade & LGPD</h3>
+            <p class="text-xs text-slate-500">Instituto Magister de Ensino • Teresina - PI</p>
+          </div>
+        </div>
+        <button onclick="closePrivacyModal()" class="w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto py-4 space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed pr-2">
+        <div class="p-3.5 bg-blue-50/70 border border-blue-100 rounded-xl text-magister-navy text-xs">
+          <strong>Compromisso Institucional:</strong> O Instituto Magister de Ensino zela pela privacidade e segurança dos dados dos alunos e responsáveis em total observância à <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD)</strong>.
+        </div>
+        <section class="space-y-1">
+          <h4 class="font-heading font-bold text-sm text-magister-navy">1. Controlador dos Dados Pessoais</h4>
+          <p>O controlador é o <strong>Instituto Magister de Ensino</strong>, com sede em Teresina - PI, responsável pelas diretrizes de tratamento de dados.</p>
+        </section>
+        <section class="space-y-1">
+          <h4 class="font-heading font-bold text-sm text-magister-navy">2. Finalidade da Coleta de Dados</h4>
+          <p>Os dados informados nos formulários (nome do responsável, WhatsApp, e-mail e dados do aluno) têm por finalidade exclusiva viabilizar o agendamento da visita pedagógica e o envio de propostas de matrícula.</p>
+        </section>
+        <section class="space-y-1">
+          <h4 class="font-heading font-bold text-sm text-magister-navy">3. Proteção aos Dados de Crianças e Adolescentes</h4>
+          <p>O tratamento de dados de menores é realizado em consonância com o Artigo 14 da LGPD, mediante consentimento explícito e de melhor interesse fornecido pelos pais ou responsável legal.</p>
+        </section>
+        <section class="space-y-1">
+          <h4 class="font-heading font-bold text-sm text-magister-navy">4. Direitos do Titular (Art. 18 LGPD)</h4>
+          <p>O titular tem direito de solicitar a confirmação, o acesso, a correção ou a exclusão de seus dados a qualquer momento via Secretaria Escolar ou e-mail: <strong class="text-magister-blue">privacidade@magisterteresina.com.br</strong>.</p>
+        </section>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex justify-end">
+        <button onclick="closePrivacyModal()" class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs sm:text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition shadow-sm">
+          Entendi e Concordo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE TERMOS DE USO -->
+  <div id="terms-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative text-slate-800 flex flex-col max-h-[85vh]">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-magister-amber flex items-center justify-center">
+            <i data-lucide="file-text" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-extrabold text-lg sm:text-xl text-magister-navy">Termos de Uso</h3>
+            <p class="text-xs text-slate-500">Instituto Magister de Ensino • Teresina - PI</p>
+          </div>
+        </div>
+        <button onclick="closeTermsModal()" class="w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto py-4 space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed pr-2">
+        <section class="space-y-1">
+          <h4 class="font-heading font-bold text-sm text-magister-navy">1. Aceitação e Escopo</h4>
+          <p>O acesso a esta plataforma constitui aceitação dos presentes Termos de Uso para agendamento de visita escolar e consulta de condições de matrícula 2026/2027.</p>
+        </section>
+        <section class="space-y-1">
+          <h4 class="font-heading font-bold text-sm text-magister-navy">2. Veracidade Cadastral</h4>
+          <p>O usuário garante a autenticidade das informações fornecidas e a titularidade dos contatos para retorno da coordenação.</p>
+        </section>
+        <section class="space-y-1">
+          <h4 class="font-heading font-bold text-sm text-magister-navy">3. Propriedade Intelectual</h4>
+          <p>Marca, logos, fotografias e conteúdos pedagógicos são de titularidade exclusiva do Instituto Magister de Ensino.</p>
+        </section>
+        <section class="space-y-1">
+          <h4 class="font-heading font-bold text-sm text-magister-navy">4. Legislação e Foro</h4>
+          <p>Aplica-se a legislação brasileira, elegendo-se o Foro da Comarca de Teresina - PI.</p>
+        </section>
+      </div>
+
+      <div class="pt-4 border-t border-slate-100 flex justify-end">
+        <button onclick="closeTermsModal()" class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs sm:text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition shadow-sm">
+          Concordo com os Termos
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- SCRIPT DE INTERAÇÕES E LÓGICA DE CONVERSÃO -->
   <script>
     // Inicializa ícones do Lucide
     lucide.createIcons();
+
+    // Gerenciamento de Cookies LGPD
+    function initCookieConsent() {
+      try {
+        const consent = localStorage.getItem('magister_cookie_consent');
+        if (!consent) {
+          setTimeout(() => {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) banner.classList.remove('hidden');
+          }, 800);
+        }
+      } catch (e) {}
+    }
+    initCookieConsent();
+
+    function acceptAllCookies() {
+      saveConsent({ essential: true, analytics: true, marketing: true });
+    }
+
+    function acceptEssentialCookies() {
+      saveConsent({ essential: true, analytics: false, marketing: false });
+    }
+
+    function saveCustomCookies() {
+      const analytics = document.getElementById('cookie-analytics').checked;
+      const marketing = document.getElementById('cookie-marketing').checked;
+      saveConsent({ essential: true, analytics, marketing });
+    }
+
+    function saveConsent(data) {
+      try {
+        localStorage.setItem('magister_cookie_consent', JSON.stringify(data));
+      } catch (e) {}
+      document.getElementById('cookie-banner').classList.add('hidden');
+      closeCookieConfig();
+    }
+
+    function openCookieConfig() {
+      const modal = document.getElementById('cookie-config-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCookieConfig() {
+      const modal = document.getElementById('cookie-config-modal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+
+    function openPrivacyModal() {
+      const modal = document.getElementById('privacy-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closePrivacyModal() {
+      const modal = document.getElementById('privacy-modal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+
+    function openTermsModal() {
+      const modal = document.getElementById('terms-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeTermsModal() {
+      const modal = document.getElementById('terms-modal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
 
     // Controle de Passos do Formulário Multi-Step
     let currentStep = 1;

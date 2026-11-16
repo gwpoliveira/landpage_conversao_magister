@@ -1,12 +1,21 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, ShieldCheck, Cookie } from "lucide-react";
 
 interface FooterProps {
   onOpenBooking: () => void;
+  onOpenPrivacy?: () => void;
+  onOpenTerms?: () => void;
+  onOpenCookies?: () => void;
 }
 
-export function Footer({ onOpenBooking }: FooterProps) {
+export function Footer({
+  onOpenBooking,
+  onOpenPrivacy,
+  onOpenTerms,
+  onOpenCookies,
+}: FooterProps) {
   return (
     <footer className="bg-magister-navy text-slate-300 py-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,14 +123,30 @@ export function Footer({ onOpenBooking }: FooterProps) {
 
         <div className="pt-8 border-t border-white/10 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© 2026 Instituto Magister de Ensino. Todos os direitos reservados.</p>
-          <p className="flex items-center gap-4">
-            <Link href="#" className="hover:underline">
-              Privacidade & LGPD
-            </Link>
-            <Link href="#" className="hover:underline">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <button
+              onClick={onOpenPrivacy}
+              className="hover:text-magister-amber transition flex items-center gap-1"
+            >
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Privacidade & LGPD</span>
+            </button>
+            <span className="text-white/20">•</span>
+            <button
+              onClick={onOpenTerms}
+              className="hover:text-magister-amber transition"
+            >
               Termos de Uso
-            </Link>
-          </p>
+            </button>
+            <span className="text-white/20">•</span>
+            <button
+              onClick={onOpenCookies}
+              className="hover:text-magister-amber transition flex items-center gap-1"
+            >
+              <Cookie className="w-3.5 h-3.5" />
+              <span>Preferências de Cookies</span>
+            </button>
+          </div>
         </div>
       </div>
     </footer>
