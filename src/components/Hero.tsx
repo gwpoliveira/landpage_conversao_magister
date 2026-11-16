@@ -10,6 +10,7 @@ import {
   GraduationCap,
   ArrowRight,
   Trophy,
+  Sparkles,
 } from "lucide-react";
 
 interface HeroProps {
@@ -27,43 +28,50 @@ export function Hero({ onOpenBooking }: HeroProps) {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-magister-navy via-magister-dark to-magister-blue text-white overflow-hidden py-16 sm:py-24">
-      <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-magister-amber/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-magister-blue/40 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative hero-animated-bg text-white overflow-hidden py-16 sm:py-24">
+      {/* Grade sutil de precisão */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none" />
+
+      {/* Orbs de Aurora Gradiente Fluida em 60fps (Luz Âmbar Solar + Azul Real Magister) */}
+      <div className="absolute -top-32 -right-24 w-[32rem] h-[32rem] bg-gradient-to-br from-magister-amber/35 to-amber-600/20 rounded-full blur-[100px] pointer-events-none animate-orb-1" />
+      <div className="absolute top-1/3 -left-32 w-[34rem] h-[34rem] bg-gradient-to-tr from-magister-blue/50 to-blue-400/25 rounded-full blur-[120px] pointer-events-none animate-orb-2" />
+      <div className="absolute -bottom-36 right-1/4 w-[28rem] h-[28rem] bg-gradient-to-r from-magister-amber/25 via-magister-blue/30 to-transparent rounded-full blur-[90px] pointer-events-none animate-orb-3" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Copy Column (7 cols) */}
           <div className="lg:col-span-7 text-center lg:text-left space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-magister-amber backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-magister-amber animate-ping" />
-              <span>Educação com Propósito em Teresina</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-magister-amber backdrop-blur-md animate-shimmer shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-magister-amber" />
+              <span>Matrículas Abertas • Teresina - Piauí</span>
             </div>
 
             <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12]">
-              Onde o <span className="text-magister-amber">acolhimento</span> transforma o aprendizado e o futuro acontece.
+              Onde o <span className="text-magister-amber relative inline-block">
+                acolhimento
+                <span className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-magister-amber to-transparent opacity-80" />
+              </span> transforma o aprendizado e o futuro acontece.
             </h1>
 
             <p className="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
               Da <strong className="text-white font-semibold">Educação Infantil</strong> ao{" "}
-              <strong className="text-white font-semibold">Ensino Médio de Alta Performance</strong>. No Instituto Magister, seu filho constrói autonomia, inteligência emocional e a preparação sólida para o ENEM e para a vida.
+              <strong className="text-white font-semibold">Ensino Médio de Alta Performance</strong>. No Instituto Magister de Ensino, seu filho constrói autonomia, inteligência emocional e a preparação sólida para o ENEM e para a vida.
             </p>
 
             {/* CTAs Duplos */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
               <button
                 onClick={() => onOpenBooking()}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-heading font-bold text-base text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-lg hover:shadow-glow-amber transition-all transform hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-heading font-bold text-base text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-lg hover:shadow-glow-amber transition-all transform hover:-translate-y-0.5 animate-shimmer"
               >
                 <CalendarCheck className="w-5 h-5" />
                 <span>Agendar Visita Guiada</span>
               </button>
               <a
-                href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20quero%20conversar%20com%20um%20orientador%20do%20Magister."
+                href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20quero%20conversar%20com%20um%20orientador%20do%20Instituto%20Magister%20de%20Ensino."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl font-heading font-semibold text-base text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl font-heading font-semibold text-base text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all hover:border-white/40"
               >
                 <MessageCircle className="w-5 h-5 text-magister-whatsapp" />
                 <span>Falar com Orientador</span>
@@ -93,7 +101,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
 
           {/* Form Column (5 cols) */}
           <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md bg-white rounded-3xl p-6 sm:p-8 shadow-2xl text-slate-900 border border-slate-100">
+            <div className="relative mx-auto max-w-md bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl text-slate-900 border border-white/30">
               <div className="flex items-center justify-between pb-6 border-b border-slate-100">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-2xl bg-magister-amberLight flex items-center justify-center">
@@ -166,7 +174,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-md transition flex items-center justify-center gap-2"
+                  className="w-full py-3.5 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-md transition flex items-center justify-center gap-2 animate-shimmer"
                 >
                   <span>Receber Contato & Agendar</span>
                   <ArrowRight className="w-4 h-4" />
