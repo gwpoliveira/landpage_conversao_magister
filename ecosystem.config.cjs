@@ -1,10 +1,12 @@
+const path = require("path");
+
 module.exports = {
   apps: [
     {
       name: "magister-landing-page",
       script: "node_modules/next/dist/bin/next",
       args: "start -p 3020",
-      cwd: "/var/www/estude.institutomagisterpi.com.br",
+      cwd: __dirname,
       instances: 1,
       exec_mode: "fork",
       autorestart: true,

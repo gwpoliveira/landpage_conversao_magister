@@ -6,23 +6,24 @@
 
 set -e
 
-APP_DIR="/var/www/estude.institutomagisterpi.com.br"
 PM2_APP_NAME="magister-landing-page"
 
-if [ -d "$APP_DIR" ]; then
-    cd "$APP_DIR"
+echo ">>> [1/5] Verificando PM2..."
+if ! command -v pm2 > /dev/null 2>&1; then
+    echo "Instalando PM2 globalmente via npm..."
+    npm install -g pm2
 fi
 
-echo ">>> [1/4] Atualizando código do repositório Git..."
+echo ">>> [2/5] Atualizando código do repositório Git..."
 git pull origin main
 
-echo ">>> [2/4] Instalando dependências..."
+echo ">>> [3/5] Instalando dependências..."
 npm ci --prefer-offline --no-audit
 
-echo ">>> [3/4] Recompilando o Next.js 15..."
+echo ">>> [4/5] Recompilando o Next.js 15..."
 npm run build
 
-echo ">>> [4/4] Recarregando no PM2 (Zero Downtime na porta 3020)..."
+echo ">>> [5/5] Recarregando no PM2 (Zero Downtime na porta 3020)..."
 if pm2 describe "$PM2_APP_NAME" > /dev/null 2>&1; then
     pm2 reload "$PM2_APP_NAME" --update-env
 else
