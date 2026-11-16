@@ -24,7 +24,8 @@
 
 - [x] **Diagnóstico de Posicionamento**: Instituto Magister de Ensino em Teresina-PI focado em acolhimento + alta performance no ENEM.
 - [x] **Padronização de Nomenclatura Oficial**: Nome corrigido rigorosamente para "Instituto Magister de Ensino" em todo o menu, header, rodapé e metatags.
-- [x] **Mapa de Personas & Objeções**: Pais de Educação Infantil, Fundamental e Ensino Médio.
+- [x] **Assinatura de Autoria & Desenvolvimento**: Crédito profissional inserido no rodapé: "Desenvolvido por Gleiser Wesley" linkando para `https://gleiserwesley.com.br`.
+- [x] **Compliance LGPD & Termos**: Banner configurável de cookies, modal de privacidade LGPD e termos de uso.
 - [x] **Funil de Conversão**: Hero com CTAs duplos, Prova Social, Bento Grid de Segmentos, Galeria de Estrutura, Multi-Step Lead Form, FAQ e Floating WhatsApp.
 - [ ] **Implementação do Projeto Next.js 15**: Tailwind CSS, Lucide Icons, Framer Motion.
 - [ ] **Formulário de Captação**: Multi-step com validação de telefone brasileiro (DDD 86).
