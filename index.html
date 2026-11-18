@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instituto Magister de Ensino | Teresina - PI | Matrículas Abertas</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  
-  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+
+  <!-- Google Fonts: Newsreader (Editorial) & DM Sans (UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap"
+    rel="stylesheet" />
 
-  <!-- Tailwind CSS CDN com Plugins -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -27,15 +30,16 @@
               amberLight: '#FEF7E8', // Fundo sutil de destaque
               emerald: '#10B981',    // Verde Ação
               whatsapp: '#25D366',   // Verde Oficial WhatsApp
+              stone: '#FAFAF8',      // Superfície clara editorial
             }
           },
           fontFamily: {
-            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
-            sans: ['Inter', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            heading: ['"DM Sans"', 'sans-serif'],
+            sans: ['"DM Sans"', 'sans-serif'],
           },
           boxShadow: {
-            'glow-amber': '0 0 25px -5px rgba(245, 172, 29, 0.45)',
-            'card-elevated': '0 10px 30px -10px rgba(19, 72, 137, 0.08), 0 20px 25px -5px rgba(0, 0, 0, 0.04)',
+            'card-elevated': '0 8px 24px -8px rgba(7, 28, 56, 0.08), 0 2px 6px -1px rgba(7, 28, 56, 0.04)',
           }
         }
       }
@@ -46,86 +50,30 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Estilos de acabamento e micro-interações */
-    .bg-grid-pattern {
-      background-size: 36px 36px;
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
     }
+
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
     }
+
     .custom-scrollbar::-webkit-scrollbar-thumb {
       background-color: #CBD5E1;
       border-radius: 9999px;
     }
-
-    /* Animação do Degradê do Fundo (Gradient Shift 60fps) */
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .hero-animated-bg {
-      background: linear-gradient(125deg, #071C38 0%, #0B2A52 30%, #134889 65%, #0B2A52 85%, #071C38 100%);
-      background-size: 280% 280%;
-      animation: gradientShift 14s ease infinite;
-    }
-
-    /* Orbs de Aurora Boreal (Luz Fluida Âmbar e Azul Real) */
-    @keyframes floatOrb1 {
-      0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.35; }
-      33% { transform: translate(80px, -50px) scale(1.25); opacity: 0.55; }
-      66% { transform: translate(-40px, 40px) scale(0.9); opacity: 0.3; }
-    }
-    @keyframes floatOrb2 {
-      0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.45; }
-      33% { transform: translate(-70px, 60px) scale(0.85); opacity: 0.25; }
-      66% { transform: translate(60px, -40px) scale(1.3); opacity: 0.55; }
-    }
-    @keyframes floatOrb3 {
-      0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.25; }
-      50% { transform: translate(50px, -30px) scale(1.2); opacity: 0.45; }
-    }
-    .animate-orb-1 { animation: floatOrb1 16s ease-in-out infinite; }
-    .animate-orb-2 { animation: floatOrb2 20s ease-in-out infinite; }
-    .animate-orb-3 { animation: floatOrb3 14s ease-in-out infinite; }
-
-    /* Feixe de Luz de Varredura (Shimmer Glow) */
-    @keyframes shimmerBeam {
-      0% { transform: translateX(-150%); }
-      100% { transform: translateX(250%); }
-    }
-    .animate-shimmer {
-      position: relative;
-      overflow: hidden;
-    }
-    .animate-shimmer::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-      transform: skewX(-20deg);
-      animation: shimmerBeam 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-
-    @keyframes pulse-subtle {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.04); opacity: 0.95; }
-    }
-    .animate-pulse-subtle {
-      animation: pulse-subtle 3s ease-in-out infinite;
-    }
   </style>
 </head>
-<body class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-magister-amber selection:text-magister-navy">
+
+<body
+  class="font-sans bg-magister-stone text-slate-800 antialiased selection:bg-magister-amber selection:text-magister-navy">
 
   <!-- Top Announcement Bar -->
   <div class="bg-magister-navy text-white text-xs sm:text-sm py-2 px-4 border-b border-white/10">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
       <div class="flex items-center gap-2">
-        <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-magister-amber text-magister-navy uppercase tracking-wider">
+        <span
+          class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-magister-amber text-magister-navy uppercase tracking-wider">
           Teresina - PI
         </span>
         <span class="text-slate-200">Matrículas Abertas para o Ano Letivo 2026/2027 • Vagas Limitadas</span>
@@ -136,7 +84,8 @@
           <span>(86) 3232-1500</span>
         </a>
         <span class="text-white/20">|</span>
-        <a href="#agendamento" class="hover:text-magister-amber transition font-semibold text-magister-amber flex items-center gap-1">
+        <a href="#agendamento"
+          class="hover:text-magister-amber transition font-semibold text-magister-amber flex items-center gap-1">
           <span>Agende sua Visita</span>
           <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
         </a>
@@ -145,13 +94,16 @@
   </div>
 
   <!-- Main Navbar -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-200">
+  <header
+    class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Logo Oficial -->
       <a href="#" class="flex items-center gap-3 group">
-        <img src="logo.png" alt="Instituto Magister de Ensino" class="h-14 w-auto object-contain transition-transform group-hover:scale-105" />
+        <img src="logo.png" alt="Instituto Magister de Ensino"
+          class="h-14 w-auto object-contain transition-transform group-hover:scale-105" />
         <div class="hidden sm:block">
-          <span class="block font-heading font-extrabold text-base sm:text-lg tracking-tight text-magister-blue leading-tight">
+          <span
+            class="block font-heading font-extrabold text-base sm:text-lg tracking-tight text-magister-blue leading-tight">
             Instituto Magister de Ensino
           </span>
           <span class="block text-[11px] font-bold text-magister-amber tracking-wider uppercase">
@@ -172,11 +124,14 @@
 
       <!-- CTA Buttons -->
       <div class="flex items-center gap-3">
-        <a href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20matr%C3%ADculas%20do%20Instituto%20Magister." target="_blank" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold text-magister-navy bg-slate-100 hover:bg-slate-200 transition">
+        <a href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20matr%C3%ADculas%20do%20Instituto%20Magister."
+          target="_blank"
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold text-magister-navy bg-slate-100 hover:bg-slate-200 transition">
           <i data-lucide="message-circle" class="w-4 h-4 text-magister-whatsapp"></i>
           <span>WhatsApp</span>
         </a>
-        <button onclick="openBookingModal()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-md hover:shadow-glow-amber transition-all transform active:scale-95">
+        <button onclick="openBookingModal()"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-bold text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition-colors">
           <i data-lucide="calendar" class="w-4 h-4"></i>
           <span>Agendar Visita</span>
         </button>
@@ -184,103 +139,92 @@
     </div>
   </header>
 
-  <!-- HERO SECTION ANIMADA COM AURORA GRADIENTE -->
-  <section class="relative hero-animated-bg text-white overflow-hidden py-16 sm:py-24">
-    <div class="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none"></div>
-
-    <!-- Orbs de Aurora Fluida -->
-    <div class="absolute -top-32 -right-24 w-[32rem] h-[32rem] bg-gradient-to-br from-magister-amber/35 to-amber-600/20 rounded-full blur-[100px] pointer-events-none animate-orb-1"></div>
-    <div class="absolute top-1/3 -left-32 w-[34rem] h-[34rem] bg-gradient-to-tr from-magister-blue/50 to-blue-400/25 rounded-full blur-[120px] pointer-events-none animate-orb-2"></div>
-    <div class="absolute -bottom-36 right-1/4 w-[28rem] h-[28rem] bg-gradient-to-r from-magister-amber/25 via-magister-blue/30 to-transparent rounded-full blur-[90px] pointer-events-none animate-orb-3"></div>
-
+  <!-- HERO SECTION EDITORIAL -->
+  <section class="relative bg-magister-navy text-white overflow-hidden py-16 sm:py-24 border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <!-- Copy Column (7 cols) -->
         <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-magister-amber backdrop-blur-md animate-shimmer shadow-sm">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-magister-amber"></i>
-            <span>Matrículas Abertas • Teresina - Piauí</span>
+          <div
+            class="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-magister-amber">
+            <span class="w-6 h-px bg-magister-amber/70 hidden sm:inline-block"></span>
+            <span>Matrículas 2026/2027 • Teresina, Piauí</span>
           </div>
 
-          <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.12]">
-            Onde o <span class="text-magister-amber relative inline-block">
-              acolhimento
-              <span class="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-magister-amber to-transparent opacity-80"></span>
-            </span> transforma o aprendizado e o futuro acontece.
+          <h1
+            class="font-serif font-medium text-4xl sm:text-5xl lg:text-[3.5rem] tracking-tight leading-[1.08] text-white">
+            Acolhimento próximo e preparo sólido da Educação Infantil ao Ensino Médio.
           </h1>
 
-          <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-            Da <strong class="text-white font-semibold">Educação Infantil</strong> ao <strong class="text-white font-semibold">Ensino Médio de Alta Performance</strong>. No Instituto Magister de Ensino, seu filho constrói autonomia, inteligência emocional e a preparação sólida para o ENEM e para a vida.
+          <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            No Instituto Magister de Ensino, turmas acompanhadas de perto, rotina organizada e preparação consistente
+            para o ENEM caminham juntas todos os dias.
           </p>
 
           <!-- CTAs Duplos -->
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-            <button onclick="openBookingModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-heading font-bold text-base text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-lg hover:shadow-glow-amber transition-all transform hover:-translate-y-0.5 animate-shimmer">
-              <i data-lucide="calendar-check" class="w-5 h-5"></i>
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <button onclick="openBookingModal()"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-heading font-bold text-sm sm:text-base text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition-colors">
+              <i data-lucide="calendar-check" class="w-4 h-4"></i>
               <span>Agendar Visita Guiada</span>
             </button>
-            <a href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20quero%20conversar%20com%20um%20orientador%20do%20Instituto%20Magister%20de%20Ensino." target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl font-heading font-semibold text-base text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all hover:border-white/40">
-              <i data-lucide="message-circle" class="w-5 h-5 text-magister-whatsapp"></i>
+            <a href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20quero%20conversar%20com%20um%20orientador%20do%20Instituto%20Magister%20de%20Ensino."
+              target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-heading font-semibold text-sm sm:text-base text-white bg-white/5 hover:bg-white/10 border border-white/20 transition-colors">
+              <i data-lucide="message-circle" class="w-4 h-4 text-magister-whatsapp"></i>
               <span>Falar com Orientador</span>
             </a>
           </div>
 
-          <!-- Mini Badges de Confiança -->
-          <div class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-300">
-            <div class="flex items-center gap-1.5">
-              <div class="flex text-magister-amber">
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              </div>
-              <span class="font-medium text-white">4.9/5 Satisfação dos Pais</span>
+          <!-- Indicadores Institucionais -->
+          <div
+            class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-3 text-xs text-slate-300">
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-magister-amber"></span>
+              <span>Portaria biométrica e acesso assistido</span>
             </div>
             <div class="flex items-center gap-2">
-              <i data-lucide="shield-check" class="w-4 h-4 text-magister-amber"></i>
-              <span>Segurança & Monitoramento Integral</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-magister-amber"></span>
+              <span>Plantão semanal de redação ENEM</span>
             </div>
             <div class="flex items-center gap-2">
-              <i data-lucide="award" class="w-4 h-4 text-magister-amber"></i>
-              <span>Top Desempenho ENEM Piauí</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-magister-amber"></span>
+              <span>Turno integral e semi-integral</span>
             </div>
           </div>
         </div>
 
         <!-- Visual Column (5 cols) -->
-        <div class="lg:col-span-5 relative">
-          <!-- Card Flutuante de Destaque -->
-          <div class="relative mx-auto max-w-md bg-white rounded-3xl p-6 sm:p-8 shadow-2xl text-slate-900 border border-slate-100">
-            <!-- Badge superior -->
-            <div class="flex items-center justify-between pb-6 border-b border-slate-100">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-magister-amberLight flex items-center justify-center">
-                  <i data-lucide="graduation-cap" class="w-6 h-6 text-magister-blue"></i>
-                </div>
-                <div>
-                  <h4 class="font-heading font-bold text-sm text-magister-navy">Matrículas 2026/2027</h4>
-                  <p class="text-xs text-slate-500">Agende sua experiência escolar</p>
-                </div>
+        <div class="lg:col-span-5">
+          <div
+            class="mx-auto max-w-md bg-white rounded-2xl p-6 sm:p-8 shadow-card-elevated text-slate-900 border border-slate-200/80">
+            <div class="flex items-center justify-between pb-5 border-b border-slate-100">
+              <div>
+                <h2 class="font-heading font-bold text-base text-magister-navy">Agende uma visita à escola</h2>
+                <p class="text-xs text-slate-500 mt-0.5">Conheça as salas e a coordenação em Teresina</p>
               </div>
-              <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
-                Abertas
+              <span
+                class="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 text-[11px] font-semibold border border-emerald-200/80">
+                Vagas 2026/27
               </span>
             </div>
 
             <!-- Formulário Rápido Hero -->
-            <form id="hero-quick-form" onsubmit="handleHeroSubmit(event)" class="mt-6 space-y-4">
+            <form id="hero-quick-form" onsubmit="handleHeroSubmit(event)" class="mt-5 space-y-4">
               <div>
                 <label class="block text-xs font-semibold text-slate-700 mb-1">Nome do Responsável</label>
-                <input type="text" required placeholder="Ex: Ana Clara Silva" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue transition" />
+                <input type="text" required placeholder="Ex: Ana Clara Silva"
+                  class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue transition" />
               </div>
               <div>
                 <label class="block text-xs font-semibold text-slate-700 mb-1">WhatsApp para Contato</label>
-                <input type="tel" required placeholder="(86) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue transition" />
+                <input type="tel" required placeholder="(86) 99999-9999"
+                  class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue transition" />
               </div>
               <div>
                 <label class="block text-xs font-semibold text-slate-700 mb-1">Segmento de Interesse</label>
-                <select required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue transition text-slate-700">
+                <select required
+                  class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue transition text-slate-700 bg-white">
                   <option value="">Selecione o ciclo escolar...</option>
                   <option value="infantil">Educação Infantil (Maternal ao Pré)</option>
                   <option value="fund1">Ensino Fundamental I (1º ao 5º ano)</option>
@@ -289,25 +233,15 @@
                   <option value="integral">Período Integral / Contraturno</option>
                 </select>
               </div>
-              <button type="submit" class="w-full py-3.5 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-md transition flex items-center justify-center gap-2">
+              <button type="submit"
+                class="w-full py-3 rounded-lg font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition-colors flex items-center justify-center gap-2">
                 <span>Receber Contato & Agendar</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </button>
               <p class="text-[11px] text-center text-slate-400">
-                🔒 Seus dados estão seguros e protegidos pela LGPD.
+                Atendimento direto com a secretaria • Dados protegidos pela LGPD.
               </p>
             </form>
-          </div>
-
-          <!-- Card estatístico flutuante -->
-          <div class="hidden sm:flex items-center gap-3 absolute -bottom-6 -left-6 bg-magister-dark/95 backdrop-blur-md text-white p-4 rounded-2xl border border-white/15 shadow-xl">
-            <div class="w-10 h-10 rounded-xl bg-magister-amber flex items-center justify-center text-magister-navy font-bold">
-              <i data-lucide="trophy" class="w-5 h-5"></i>
-            </div>
-            <div>
-              <p class="text-xs text-slate-300">Aprovações Medicina & Direito</p>
-              <p class="text-sm font-heading font-bold text-magister-amber">+98% em Universidades Públicas</p>
-            </div>
           </div>
         </div>
       </div>
@@ -315,344 +249,361 @@
   </section>
 
   <!-- NÚMEROS & PROVA SOCIAL -->
-  <section class="py-12 bg-white border-b border-slate-100">
+  <section class="py-10 bg-white border-b border-slate-200/70">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
-        <div class="pt-4 md:pt-0">
-          <p class="font-heading font-extrabold text-3xl sm:text-4xl text-magister-blue">+25 Anos</p>
-          <p class="text-xs sm:text-sm font-medium text-slate-500 mt-1">Tradição & Inovação no Piauí</p>
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-8 text-left divide-y md:divide-y-0 md:divide-x divide-slate-200/80">
+        <div class="pt-4 md:pt-0 md:pr-6">
+          <p class="font-serif font-semibold text-3xl sm:text-4xl text-magister-navy tabular-nums">+25 anos</p>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">De história educacional em Teresina</p>
         </div>
-        <div class="pt-4 md:pt-0">
-          <p class="font-heading font-extrabold text-3xl sm:text-4xl text-magister-amber">+1.500</p>
-          <p class="text-xs sm:text-sm font-medium text-slate-500 mt-1">Alunos Formados com Sucesso</p>
+        <div class="pt-4 md:pt-0 md:px-6">
+          <p class="font-serif font-semibold text-3xl sm:text-4xl text-magister-navy tabular-nums">+1.500</p>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Alunos formados pela instituição</p>
         </div>
-        <div class="pt-4 md:pt-0">
-          <p class="font-heading font-extrabold text-3xl sm:text-4xl text-magister-blue">100%</p>
-          <p class="text-xs sm:text-sm font-medium text-slate-500 mt-1">Salas Climatizadas & Multimídia</p>
+        <div class="pt-4 md:pt-0 md:px-6">
+          <p class="font-serif font-semibold text-3xl sm:text-4xl text-magister-navy tabular-nums">100%</p>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Salas climatizadas e equipadas</p>
         </div>
-        <div class="pt-4 md:pt-0">
-          <p class="font-heading font-extrabold text-3xl sm:text-4xl text-magister-amber">Top ENEM</p>
-          <p class="text-xs sm:text-sm font-medium text-slate-500 mt-1">Redações Acima de 900 Pontos</p>
+        <div class="pt-4 md:pt-0 md:pl-6">
+          <p class="font-serif font-semibold text-3xl sm:text-4xl text-magister-blue tabular-nums">+900 pts</p>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Redações de destaque no ENEM</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CICLOS PEDAGÓGICOS (BENTO GRID INTERATIVO) -->
-  <section id="ciclos" class="py-20 bg-slate-50">
+  <!-- CICLOS PEDAGÓGICOS -->
+  <section id="ciclos" class="py-20 bg-magister-stone">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-block px-3 py-1 rounded-full bg-magister-amberLight text-magister-amber font-heading font-bold text-xs uppercase tracking-wider mb-3">
-          Jornada Completa de Formação
+      <div class="max-w-2xl mb-12">
+        <span class="text-xs font-semibold text-magister-blue uppercase tracking-[0.14em]">
+          Jornada de Formação
         </span>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-magister-navy tracking-tight">
+        <h2 class="font-serif font-medium text-3xl sm:text-4xl text-magister-navy tracking-tight mt-2">
           O cuidado certo para cada fase do desenvolvimento.
         </h2>
-        <p class="text-slate-600 text-sm sm:text-base mt-4">
-          Do primeiro contato com o mundo das letras até a conquista da vaga na universidade dos sonhos, oferecemos um ecossistema pedagógico estruturado para o crescimento integral.
+        <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+          Do primeiro contato com a leitura até a preparação para o ENEM, cada etapa tem coordenação dedicada e rotina
+          clara.
         </p>
       </div>
 
-      <!-- Bento Grid de Ciclos -->
+      <!-- Grid de Ciclos -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Ciclo 1: Educação Infantil -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 hover:border-magister-amber shadow-sm hover:shadow-card-elevated transition-all flex flex-col justify-between group">
+        <div
+          class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/80 hover:border-magister-blue/40 transition-colors flex flex-col justify-between">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-amber-50 text-magister-amber flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="shapes" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
+              <span class="text-xs font-semibold text-slate-400 tabular-nums">01</span>
+              <span class="text-[11px] font-semibold text-magister-blue uppercase tracking-wider">Maternal ao Pré</span>
             </div>
-            <span class="text-xs font-bold text-magister-amber uppercase tracking-wider">Maternal ao Pré</span>
-            <h3 class="font-heading font-bold text-xl text-magister-navy mt-1 mb-3">Educação Infantil</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-4">
-              Afeto, segurança, psicomotricidade e introdução bilíngue lúdica. Espaço acolhedor projetado para despertar o amor natural pela descoberta.
+            <h3 class="font-heading font-bold text-xl text-magister-navy mb-2.5">Educação Infantil</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">
+              Afeto, psicomotricidade e introdução bilíngue lúdica em um espaço acolhedor para as primeiras descobertas.
             </p>
-            <ul class="text-xs text-slate-500 space-y-2 mb-6">
+            <ul class="text-xs text-slate-600 space-y-2 mb-6">
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-blue shrink-0"></i>
                 <span>Parquinho temático seguro</span>
               </li>
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-blue shrink-0"></i>
                 <span>Acompanhamento socioemocional</span>
               </li>
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-blue shrink-0"></i>
                 <span>Nutrição balanceada orientada</span>
               </li>
             </ul>
           </div>
-          <button onclick="openBookingModal('Educação Infantil')" class="w-full py-2.5 rounded-xl font-heading font-bold text-xs text-magister-blue bg-slate-50 group-hover:bg-magister-amber group-hover:text-magister-navy transition">
+          <button onclick="openBookingModal('Educação Infantil')"
+            class="w-full py-2.5 rounded-lg font-heading font-semibold text-xs text-magister-navy bg-slate-100 hover:bg-magister-amber transition-colors">
             Conhecer o Infantil
           </button>
         </div>
 
         <!-- Ciclo 2: Fundamental I -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 hover:border-magister-blue shadow-sm hover:shadow-card-elevated transition-all flex flex-col justify-between group">
+        <div
+          class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/80 hover:border-magister-blue/40 transition-colors flex flex-col justify-between">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-blue-50 text-magister-blue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="book-open" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
+              <span class="text-xs font-semibold text-slate-400 tabular-nums">02</span>
+              <span class="text-[11px] font-semibold text-magister-blue uppercase tracking-wider">1º ao 5º ano</span>
             </div>
-            <span class="text-xs font-bold text-magister-blue uppercase tracking-wider">1º ao 5º ano</span>
-            <h3 class="font-heading font-bold text-xl text-magister-navy mt-1 mb-3">Fundamental I</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-4">
-              Consolidação da leitura fluente, raciocínio lógico-matemático e construção de disciplina e hábitos de estudo consistentes.
+            <h3 class="font-heading font-bold text-xl text-magister-navy mb-2.5">Fundamental I</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">
+              Consolidação da leitura fluente, raciocínio lógico-matemático e hábitos de estudo consistentes.
             </p>
-            <ul class="text-xs text-slate-500 space-y-2 mb-6">
+            <ul class="text-xs text-slate-600 space-y-2 mb-6">
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-blue shrink-0"></i>
                 <span>Projetos de leitura criativa</span>
               </li>
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-blue shrink-0"></i>
                 <span>Educação financeira prática</span>
               </li>
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-blue shrink-0"></i>
                 <span>Iniciação à robótica educativa</span>
               </li>
             </ul>
           </div>
-          <button onclick="openBookingModal('Fundamental I')" class="w-full py-2.5 rounded-xl font-heading font-bold text-xs text-magister-blue bg-slate-50 group-hover:bg-magister-blue group-hover:text-white transition">
+          <button onclick="openBookingModal('Fundamental I')"
+            class="w-full py-2.5 rounded-lg font-heading font-semibold text-xs text-magister-navy bg-slate-100 hover:bg-magister-blue hover:text-white transition-colors">
             Conhecer o Fund. I
           </button>
         </div>
 
         <!-- Ciclo 3: Fundamental II -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 hover:border-magister-blue shadow-sm hover:shadow-card-elevated transition-all flex flex-col justify-between group">
+        <div
+          class="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/80 hover:border-magister-blue/40 transition-colors flex flex-col justify-between">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-blue-50 text-magister-blue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="compass" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
+              <span class="text-xs font-semibold text-slate-400 tabular-nums">03</span>
+              <span class="text-[11px] font-semibold text-magister-blue uppercase tracking-wider">6º ao 9º ano</span>
             </div>
-            <span class="text-xs font-bold text-magister-blue uppercase tracking-wider">6º ao 9º ano</span>
-            <h3 class="font-heading font-bold text-xl text-magister-navy mt-1 mb-3">Fundamental II</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-4">
-              Pensamento crítico, autonomia intelectual, laboratório de ciências e transição madura para os desafios acadêmicos futuros.
+            <h3 class="font-heading font-bold text-xl text-magister-navy mb-2.5">Fundamental II</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">
+              Pensamento crítico, autonomia intelectual, laboratório de ciências e transição madura para o Ensino Médio.
             </p>
-            <ul class="text-xs text-slate-500 space-y-2 mb-6">
+            <ul class="text-xs text-slate-600 space-y-2 mb-6">
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-blue shrink-0"></i>
                 <span>Laboratório de Ciências moderno</span>
               </li>
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-blue shrink-0"></i>
                 <span>Simulados diagnósticos anuais</span>
               </li>
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-blue shrink-0"></i>
                 <span>Desenvolvimento de liderança</span>
               </li>
             </ul>
           </div>
-          <button onclick="openBookingModal('Fundamental II')" class="w-full py-2.5 rounded-xl font-heading font-bold text-xs text-magister-blue bg-slate-50 group-hover:bg-magister-blue group-hover:text-white transition">
+          <button onclick="openBookingModal('Fundamental II')"
+            class="w-full py-2.5 rounded-lg font-heading font-semibold text-xs text-magister-navy bg-slate-100 hover:bg-magister-blue hover:text-white transition-colors">
             Conhecer o Fund. II
           </button>
         </div>
 
         <!-- Ciclo 4: Ensino Médio & Pré-Vestibular -->
-        <div class="bg-gradient-to-b from-magister-dark to-magister-navy text-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-glow-amber transition-all flex flex-col justify-between group relative overflow-hidden">
-          <div class="absolute top-0 right-0 bg-magister-amber text-magister-navy text-[10px] font-extrabold uppercase px-3 py-1 rounded-bl-xl">
-            Destaque ENEM
-          </div>
+        <div
+          class="bg-magister-navy text-white rounded-2xl p-6 sm:p-7 border border-magister-navy flex flex-col justify-between">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-white/10 text-magister-amber flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="award" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between pb-4 mb-5 border-b border-white/15">
+              <span class="text-xs font-semibold text-magister-amber tabular-nums">04</span>
+              <span class="text-[11px] font-semibold text-magister-amber uppercase tracking-wider">1ª à 3ª série</span>
             </div>
-            <span class="text-xs font-bold text-magister-amber uppercase tracking-wider">1ª à 3ª série</span>
-            <h3 class="font-heading font-bold text-xl text-white mt-1 mb-3">Ensino Médio & ENEM</h3>
-            <p class="text-slate-200 text-sm leading-relaxed mb-4">
-              Preparação de alta densidade para o ENEM/SISU, redação nota 1000 com plantão semanal, simulados padrão TRI e orientação vocacional.
+            <h3 class="font-heading font-bold text-xl text-white mb-2.5">Ensino Médio & ENEM</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-5">
+              Preparação de alta densidade para o ENEM/SISU, redação nota 1000 com plantão semanal e simulados TRI.
             </p>
             <ul class="text-xs text-slate-300 space-y-2 mb-6">
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-magister-amber"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-amber shrink-0"></i>
                 <span>Correção analítica de redação</span>
               </li>
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-magister-amber"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-amber shrink-0"></i>
                 <span>Simulados com ranqueamento TRI</span>
               </li>
               <li class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-magister-amber"></i>
+                <i data-lucide="check" class="w-3.5 h-3.5 text-magister-amber shrink-0"></i>
                 <span>Mentoria de carreira universitária</span>
               </li>
             </ul>
           </div>
-          <button onclick="openBookingModal('Ensino Médio')" class="w-full py-2.5 rounded-xl font-heading font-bold text-xs text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition">
-            Quero Alta Performance
+          <button onclick="openBookingModal('Ensino Médio')"
+            class="w-full py-2.5 rounded-lg font-heading font-bold text-xs text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition-colors">
+            Conhecer o Ensino Médio
           </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DIFERENCIAIS & PILARES -->
-  <section id="diferenciais" class="py-20 bg-white">
+  <!-- DIFERENCIAIS & PILARES (COM FOTOGRAFIA EDITORIAL) -->
+  <section id="diferenciais" class="py-20 bg-white border-y border-slate-200/70">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <!-- Texto explicativo -->
-        <div class="lg:col-span-5 space-y-6">
-          <span class="inline-block px-3 py-1 rounded-full bg-blue-50 text-magister-blue font-heading font-bold text-xs uppercase tracking-wider">
-            Por que o Instituto Magister?
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <!-- Texto explicativo (6 cols) -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs font-semibold text-magister-blue uppercase tracking-[0.14em]">
+            Por que o Instituto Magister
           </span>
-          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-magister-navy tracking-tight leading-tight">
+          <h2 class="font-serif font-medium text-3xl sm:text-4xl text-magister-navy tracking-tight leading-tight">
             Mais que uma escola: uma extensão segura da sua família.
           </h2>
           <p class="text-slate-600 text-base leading-relaxed">
-            Sabemos que escolher a escola do seu filho é uma das decisões mais importantes da vida. Por isso, aliamos excelência pedagógica com atenção humana individualizada.
+            Escolher a escola do seu filho exige confiança no dia a dia. Unimos rigor pedagógico com acompanhamento
+            humano próximo, onde cada aluno é conhecido pelo nome.
           </p>
-          <div class="space-y-4 pt-2">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-magister-amberLight text-magister-amber flex items-center justify-center shrink-0">
-                <i data-lucide="heart-handshake" class="w-5 h-5"></i>
-              </div>
+
+          <div class="divide-y divide-slate-200/80 border-t border-slate-200/80 pt-2">
+            <div class="py-4 flex items-start gap-4">
+              <i data-lucide="heart-handshake" class="w-5 h-5 text-magister-blue shrink-0 mt-0.5"></i>
               <div>
-                <h4 class="font-heading font-bold text-base text-magister-navy">Núcleo de Psicologia & Acolhimento</h4>
-                <p class="text-xs sm:text-sm text-slate-500 mt-1">Apoio contínuo contra ansiedade, fomento à inteligência emocional e resolução colaborativa de conflitos.</p>
+                <h4 class="font-heading font-bold text-sm sm:text-base text-magister-navy">Núcleo de Psicologia &
+                  Acolhimento</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">Apoio contínuo contra ansiedade, inteligência
+                  emocional e mediação próxima às famílias.</p>
               </div>
             </div>
 
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-blue-50 text-magister-blue flex items-center justify-center shrink-0">
-                <i data-lucide="shield" class="w-5 h-5"></i>
-              </div>
+            <div class="py-4 flex items-start gap-4">
+              <i data-lucide="shield-check" class="w-5 h-5 text-magister-blue shrink-0 mt-0.5"></i>
               <div>
-                <h4 class="font-heading font-bold text-base text-magister-navy">Segurança e Portaria Assistida</h4>
-                <p class="text-xs sm:text-sm text-slate-500 mt-1">Controle rigoroso de acesso biométrico, monitoramento por câmeras e fluxo organizado de embarque e desembarque.</p>
+                <h4 class="font-heading font-bold text-sm sm:text-base text-magister-navy">Segurança e Portaria
+                  Assistida</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">Controle de acesso biométrico, monitoramento por
+                  câmeras e fluxo organizado de embarque.</p>
               </div>
             </div>
 
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                <i data-lucide="clock" class="w-5 h-5"></i>
-              </div>
+            <div class="py-4 flex items-start gap-4">
+              <i data-lucide="clock" class="w-5 h-5 text-magister-blue shrink-0 mt-0.5"></i>
               <div>
-                <h4 class="font-heading font-bold text-base text-magister-navy">Turno Integral Flexível</h4>
-                <p class="text-xs sm:text-sm text-slate-500 mt-1">Contraturno enriquecido com acompanhamento pedagógico, esportes, oficinas artísticas e nutrição supervisionada.</p>
+                <h4 class="font-heading font-bold text-sm sm:text-base text-magister-navy">Turno Integral Flexível &
+                  Bilinguismo</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">Contraturno com orientação de tarefas, esportes,
+                  cultura maker, inglês prático e nutrição supervisionada.</p>
+              </div>
+            </div>
+
+            <div class="py-4 flex items-start gap-4">
+              <i data-lucide="smartphone" class="w-5 h-5 text-magister-blue shrink-0 mt-0.5"></i>
+              <div>
+                <h4 class="font-heading font-bold text-sm sm:text-base text-magister-navy">Comunicação Escola-Família
+                </h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">Aplicativo escolar com frequência, boletim em tempo
+                  real e canal direto com a coordenação.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Cards visuais / Grid moderno -->
-        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition">
-            <i data-lucide="laptop" class="w-8 h-8 text-magister-blue mb-4"></i>
-            <h4 class="font-heading font-bold text-lg text-magister-navy">Tecnologia & Cultura Maker</h4>
-            <p class="text-xs sm:text-sm text-slate-600 mt-2">Salas interativas com lousas digitais, programação e robótica integrada ao currículo regular.</p>
-          </div>
-          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition">
-            <i data-lucide="globe" class="w-8 h-8 text-magister-amber mb-4"></i>
-            <h4 class="font-heading font-bold text-lg text-magister-navy">Programa de Bilinguismo</h4>
-            <p class="text-xs sm:text-sm text-slate-600 mt-2">Imersão prática na língua inglesa com foco em conversação natural e preparação para certificações internacionais.</p>
-          </div>
-          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition">
-            <i data-lucide="dumbbell" class="w-8 h-8 text-emerald-600 mb-4"></i>
-            <h4 class="font-heading font-bold text-lg text-magister-navy">Esportes & Socialização</h4>
-            <p class="text-xs sm:text-sm text-slate-600 mt-2">Futsal, vôlei, basquete, judô e dança, desenvolvendo cooperação, saúde física e resiliência.</p>
-          </div>
-          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:border-slate-200 transition">
-            <i data-lucide="users" class="w-8 h-8 text-magister-blue mb-4"></i>
-            <h4 class="font-heading font-bold text-lg text-magister-navy">Comunicação Escola-Família</h4>
-            <p class="text-xs sm:text-sm text-slate-600 mt-2">Aplicativo escolar próprio com boletim em tempo real, recados, frequência e canal direto com a coordenação.</p>
-          </div>
+        <!-- Fotografia Editorial Real (6 cols) -->
+        <div class="lg:col-span-6">
+          <figure class="space-y-3">
+            <div class="overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100">
+              <img src="images/escola-acolhimento.jpg"
+                alt="Professora acompanhando alunos em atividade no Instituto Magister de Ensino"
+                class="w-full aspect-[4/3] object-cover" loading="lazy" />
+            </div>
+            <figcaption class="flex items-center justify-between text-xs text-slate-500 px-1">
+              <span>Acompanhamento pedagógico próximo em pequenos grupos</span>
+              <span class="font-medium text-magister-navy">Teresina • PI</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ESTRUTURA & GALERIA -->
-  <section id="estrutura" class="py-20 bg-slate-50">
+  <section id="estrutura" class="py-20 bg-magister-stone">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="inline-block px-3 py-1 rounded-full bg-magister-amberLight text-magister-amber font-heading font-bold text-xs uppercase tracking-wider mb-3">
-          Infraestrutura Completa
-        </span>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-magister-navy tracking-tight">
-          Ambientes modernos e 100% climatizados em Teresina.
-        </h2>
-        <p class="text-slate-600 text-sm sm:text-base mt-3">
-          Projetados para estimular o foco, a criatividade e a segurança dos estudantes em cada etapa.
-        </p>
-      </div>
-
-      <!-- Grid de Espaços -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
-          <div class="h-48 bg-gradient-to-tr from-magister-navy to-magister-blue flex items-center justify-center text-white relative">
-            <i data-lucide="layout" class="w-12 h-12 text-magister-amber opacity-80 group-hover:scale-110 transition-transform"></i>
-            <span class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md text-white text-[11px] px-2.5 py-1 rounded-md">Conforto Térmico</span>
-          </div>
-          <div class="p-5">
-            <h4 class="font-heading font-bold text-base text-magister-navy">Salas de Aula Multimídia</h4>
-            <p class="text-xs text-slate-500 mt-1">Ambientes 100% refrigerados, iluminação LED adequada e recursos audiovisuais interativos.</p>
-          </div>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="max-w-2xl">
+          <span class="text-xs font-semibold text-magister-blue uppercase tracking-[0.14em]">
+            Infraestrutura Completa
+          </span>
+          <h2 class="font-serif font-medium text-3xl sm:text-4xl text-magister-navy tracking-tight mt-2">
+            Ambientes modernos e 100% climatizados em Teresina.
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-3">
+            Projetados para estimular o foco, a prática científica e a convivência segura em cada etapa.
+          </p>
         </div>
-
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
-          <div class="h-48 bg-gradient-to-tr from-slate-800 to-magister-dark flex items-center justify-center text-white relative">
-            <i data-lucide="flask-conical" class="w-12 h-12 text-magister-amber opacity-80 group-hover:scale-110 transition-transform"></i>
-            <span class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md text-white text-[11px] px-2.5 py-1 rounded-md">Prática Científica</span>
-          </div>
-          <div class="p-5">
-            <h4 class="font-heading font-bold text-base text-magister-navy">Laboratório de Ciências & Robótica</h4>
-            <p class="text-xs text-slate-500 mt-1">Bancadas equipadas para experimentos de Física, Química, Biologia e programação prática.</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 group">
-          <div class="h-48 bg-gradient-to-tr from-magister-blue to-emerald-800 flex items-center justify-center text-white relative">
-            <i data-lucide="play" class="w-12 h-12 text-white opacity-80 group-hover:scale-110 transition-transform"></i>
-            <span class="absolute bottom-3 left-3 bg-black/40 backdrop-blur-md text-white text-[11px] px-2.5 py-1 rounded-md">Saúde & Bem-Estar</span>
-          </div>
-          <div class="p-5">
-            <h4 class="font-heading font-bold text-base text-magister-navy">Quadra Poliesportiva Coberta</h4>
-            <p class="text-xs text-slate-500 mt-1">Espaço amplo e seguro para campeonatos esportivos, apresentações culturais e recreação diária.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-10 text-center">
-        <button onclick="openBookingModal()" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-heading font-bold text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow transition">
-          <i data-lucide="eye" class="w-4 h-4"></i>
-          <span>Agende uma Visita e Conheça de Perto</span>
+        <button onclick="openBookingModal()"
+          class="self-start md:self-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs sm:text-sm font-heading font-bold text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition-colors shrink-0">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          <span>Agendar Visita Presencial</span>
         </button>
+      </div>
+
+      <!-- Grid de Espaços com Fotografias -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 group">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+            <img src="images/sala-multimidia.jpg" alt="Salas de Aula Multimídia climatizadas do Instituto Magister"
+              class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+              loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="text-[11px] font-semibold text-magister-blue uppercase tracking-wider">Conforto Térmico</span>
+            <h4 class="font-heading font-bold text-lg text-magister-navy mt-1">Salas de Aula Multimídia</h4>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">Ambientes 100% refrigerados, iluminação
+              adequada e recursos audiovisuais interativos.</p>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 group">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+            <img src="images/laboratorio-ciencias.jpg" alt="Laboratório de Ciências e Robótica do Instituto Magister"
+              class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+              loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="text-[11px] font-semibold text-magister-blue uppercase tracking-wider">Prática
+              Científica</span>
+            <h4 class="font-heading font-bold text-lg text-magister-navy mt-1">Laboratório de Ciências & Robótica</h4>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">Bancadas equipadas para experimentos de
+              Física, Química, Biologia e programação prática.</p>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 group">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+            <img src="images/quadra-poliesportiva.jpg" alt="Quadra Poliesportiva Coberta do Instituto Magister"
+              class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+              loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="text-[11px] font-semibold text-magister-blue uppercase tracking-wider">Saúde &
+              Convivência</span>
+            <h4 class="font-heading font-bold text-lg text-magister-navy mt-1">Quadra Poliesportiva Coberta</h4>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">Espaço amplo e protegido do sol para
+              esportes, apresentações culturais e recreação diária.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- DEPOIMENTOS DE PAIS E ALUNOS -->
-  <section id="depoimentos" class="py-20 bg-white">
+  <section id="depoimentos" class="py-20 bg-white border-t border-slate-200/70">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-block px-3 py-1 rounded-full bg-magister-amberLight text-magister-amber font-heading font-bold text-xs uppercase tracking-wider mb-3">
-          Histórias de Sucesso
+      <div class="max-w-2xl mb-12">
+        <span class="text-xs font-semibold text-magister-blue uppercase tracking-[0.14em]">
+          Comunidade Escolar
         </span>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-magister-navy tracking-tight">
+        <h2 class="font-serif font-medium text-3xl sm:text-4xl text-magister-navy tracking-tight mt-2">
           A voz de quem confia no Instituto Magister.
         </h2>
         <p class="text-slate-600 text-sm sm:text-base mt-3">
-          Veja os relatos de famílias que vivenciam diariamente nossa dedicação ao ensino em Teresina.
+          Relatos de famílias e ex-alunos que vivenciam nossa rotina em Teresina.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Depoimento 1 -->
-        <div class="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm relative flex flex-col justify-between">
+        <div class="bg-magister-stone rounded-2xl p-6 sm:p-7 border border-slate-200/80 flex flex-col justify-between">
           <div>
-            <div class="flex text-magister-amber mb-4">
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            </div>
-            <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
-              "Meu filho entrou tímido no 1º ano e a evolução socioemocional dele foi impressionante. Os professores realmente conhecem cada aluno pelo nome. Hoje ele ama ir para a escola!"
+            <span class="font-serif text-3xl leading-none text-magister-amber select-none">“</span>
+            <p class="text-slate-700 text-sm leading-relaxed mt-2 mb-6">
+              Meu filho entrou tímido no 1º ano e a evolução socioemocional dele foi impressionante. Os professores
+              realmente conhecem cada aluno pelo nome. Hoje ele ama ir para a escola!
             </p>
           </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
-            <div class="w-10 h-10 rounded-full bg-magister-blue text-white font-bold flex items-center justify-center text-xs">
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80">
+            <div
+              class="w-9 h-9 rounded-full bg-magister-blue text-white font-semibold flex items-center justify-center text-xs">
               MC
             </div>
             <div>
@@ -663,21 +614,17 @@
         </div>
 
         <!-- Depoimento 2 -->
-        <div class="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm relative flex flex-col justify-between">
+        <div class="bg-magister-stone rounded-2xl p-6 sm:p-7 border border-slate-200/80 flex flex-col justify-between">
           <div>
-            <div class="flex text-magister-amber mb-4">
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            </div>
-            <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
-              "A preparação para o ENEM no Magister é de outro nível. O plantão de redação me fez saltar de 720 para 960 pontos. Consegui minha aprovação em Medicina na primeira chamada!"
+            <span class="font-serif text-3xl leading-none text-magister-amber select-none">“</span>
+            <p class="text-slate-700 text-sm leading-relaxed mt-2 mb-6">
+              A preparação para o ENEM no Magister é de outro nível. O plantão de redação me fez saltar de 720 para 960
+              pontos. Consegui minha aprovação em Medicina na primeira chamada!
             </p>
           </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
-            <div class="w-10 h-10 rounded-full bg-magister-amber text-magister-navy font-bold flex items-center justify-center text-xs">
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80">
+            <div
+              class="w-9 h-9 rounded-full bg-magister-navy text-white font-semibold flex items-center justify-center text-xs">
               GS
             </div>
             <div>
@@ -688,21 +635,17 @@
         </div>
 
         <!-- Depoimento 3 -->
-        <div class="bg-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm relative flex flex-col justify-between">
+        <div class="bg-magister-stone rounded-2xl p-6 sm:p-7 border border-slate-200/80 flex flex-col justify-between">
           <div>
-            <div class="flex text-magister-amber mb-4">
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            </div>
-            <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
-              "Como mãe que trabalha em horário integral, a tranquilidade de saber que minhas filhas estão em um local seguro, com alimentação saudável e contraturno rico em atividades é impagável."
+            <span class="font-serif text-3xl leading-none text-magister-amber select-none">“</span>
+            <p class="text-slate-700 text-sm leading-relaxed mt-2 mb-6">
+              Como mãe que trabalha em horário integral, a tranquilidade de saber que minhas filhas estão em um local
+              seguro, com alimentação saudável e contraturno rico em atividades é impagável.
             </p>
           </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
-            <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xs">
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80">
+            <div
+              class="w-9 h-9 rounded-full bg-emerald-700 text-white font-semibold flex items-center justify-center text-xs">
               RF
             </div>
             <div>
@@ -716,36 +659,42 @@
   </section>
 
   <!-- FORMULÁRIO DE CONVERSÃO / AGENDAMENTO (MULTI-STEP) -->
-  <section id="agendamento" class="py-20 bg-gradient-to-b from-magister-navy to-magister-dark text-white relative">
+  <section id="agendamento" class="py-20 bg-magister-navy text-white relative">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-10">
-        <span class="inline-block px-3 py-1 rounded-full bg-magister-amber/20 text-magister-amber font-heading font-bold text-xs uppercase tracking-wider mb-2">
-          Passo Decisivo
+        <span class="text-xs font-semibold text-magister-amber uppercase tracking-[0.14em]">
+          Atendimento Presencial ou Online
         </span>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+        <h2 class="font-serif font-medium text-3xl sm:text-4xl text-white tracking-tight mt-2">
           Agende sua Visita Pedagógica Guiada
         </h2>
         <p class="text-slate-300 text-sm sm:text-base mt-2">
-          Conheça de perto as salas, a equipe pedagógica e as condições especiais para matrículas 2026/2027.
+          Conheça de perto as salas, a equipe pedagógica e as condições para matrículas 2026/2027.
         </p>
       </div>
 
       <!-- Card do Formulário Multi-Step -->
-      <div class="bg-white text-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl border border-white/10">
+      <div class="bg-white text-slate-800 rounded-2xl p-6 sm:p-10 shadow-card-elevated border border-slate-200/20">
         <!-- Progress Steps -->
         <div class="flex items-center justify-between mb-8 max-w-xs mx-auto">
           <div class="flex flex-col items-center">
-            <div id="step-badge-1" class="w-8 h-8 rounded-full bg-magister-blue text-white font-bold flex items-center justify-center text-xs transition">1</div>
+            <div id="step-badge-1"
+              class="w-8 h-8 rounded-full bg-magister-blue text-white font-bold flex items-center justify-center text-xs transition">
+              1</div>
             <span class="text-[11px] font-semibold text-slate-600 mt-1">Contato</span>
           </div>
           <div class="flex-1 h-0.5 bg-slate-200 mx-2"></div>
           <div class="flex flex-col items-center">
-            <div id="step-badge-2" class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 font-bold flex items-center justify-center text-xs transition">2</div>
+            <div id="step-badge-2"
+              class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 font-bold flex items-center justify-center text-xs transition">
+              2</div>
             <span class="text-[11px] font-semibold text-slate-400 mt-1">Aluno</span>
           </div>
           <div class="flex-1 h-0.5 bg-slate-200 mx-2"></div>
           <div class="flex flex-col items-center">
-            <div id="step-badge-3" class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 font-bold flex items-center justify-center text-xs transition">3</div>
+            <div id="step-badge-3"
+              class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 font-bold flex items-center justify-center text-xs transition">
+              3</div>
             <span class="text-[11px] font-semibold text-slate-400 mt-1">Agendamento</span>
           </div>
         </div>
@@ -758,20 +707,24 @@
             </h4>
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1">Nome Completo do Responsável *</label>
-              <input type="text" id="resp-nome" required placeholder="Digite seu nome..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
+              <input type="text" id="resp-nome" required placeholder="Digite seu nome..."
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-semibold text-slate-700 mb-1">WhatsApp com DDD (Ex: 86) *</label>
-                <input type="tel" id="resp-whatsapp" required placeholder="(86) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
+                <input type="tel" id="resp-whatsapp" required placeholder="(86) 99999-9999"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
               </div>
               <div>
                 <label class="block text-xs font-semibold text-slate-700 mb-1">E-mail Principal</label>
-                <input type="email" id="resp-email" placeholder="seuemail@exemplo.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
+                <input type="email" id="resp-email" placeholder="seuemail@exemplo.com"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
               </div>
             </div>
             <div class="pt-4 flex justify-end">
-              <button type="button" onclick="nextStep(2)" class="px-6 py-3 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2">
+              <button type="button" onclick="nextStep(2)"
+                class="px-6 py-3 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2">
                 <span>Continuar</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </button>
@@ -786,11 +739,13 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-semibold text-slate-700 mb-1">Nome do(a) Filho(a) ou Dependente</label>
-                <input type="text" id="aluno-nome" placeholder="Nome do aluno..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
+                <input type="text" id="aluno-nome" placeholder="Nome do aluno..."
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
               </div>
               <div>
                 <label class="block text-xs font-semibold text-slate-700 mb-1">Série / Ciclo Pretendido *</label>
-                <select id="aluno-serie" required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue text-slate-700">
+                <select id="aluno-serie" required
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue text-slate-700">
                   <option value="">Selecione...</option>
                   <option value="Educação Infantil (2 a 5 anos)">Educação Infantil (2 a 5 anos)</option>
                   <option value="Ensino Fundamental I (1º ao 5º ano)">Ensino Fundamental I (1º ao 5º ano)</option>
@@ -803,25 +758,32 @@
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1">Turno de Preferência</label>
               <div class="grid grid-cols-3 gap-3">
-                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 text-xs font-medium cursor-pointer hover:bg-slate-50">
-                  <input type="radio" name="turno" value="Manhã" checked class="text-magister-blue focus:ring-magister-blue" />
+                <label
+                  class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 text-xs font-medium cursor-pointer hover:bg-slate-50">
+                  <input type="radio" name="turno" value="Manhã" checked
+                    class="text-magister-blue focus:ring-magister-blue" />
                   <span>Manhã</span>
                 </label>
-                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 text-xs font-medium cursor-pointer hover:bg-slate-50">
+                <label
+                  class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 text-xs font-medium cursor-pointer hover:bg-slate-50">
                   <input type="radio" name="turno" value="Tarde" class="text-magister-blue focus:ring-magister-blue" />
                   <span>Tarde</span>
                 </label>
-                <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 text-xs font-medium cursor-pointer hover:bg-slate-50">
-                  <input type="radio" name="turno" value="Integral" class="text-magister-blue focus:ring-magister-blue" />
+                <label
+                  class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 text-xs font-medium cursor-pointer hover:bg-slate-50">
+                  <input type="radio" name="turno" value="Integral"
+                    class="text-magister-blue focus:ring-magister-blue" />
                   <span>Integral</span>
                 </label>
               </div>
             </div>
             <div class="pt-4 flex justify-between">
-              <button type="button" onclick="nextStep(1)" class="px-5 py-3 rounded-xl font-heading font-medium text-sm text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
+              <button type="button" onclick="nextStep(1)"
+                class="px-5 py-3 rounded-xl font-heading font-medium text-sm text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
                 Voltar
               </button>
-              <button type="button" onclick="nextStep(3)" class="px-6 py-3 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2">
+              <button type="button" onclick="nextStep(3)"
+                class="px-6 py-3 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2">
                 <span>Continuar</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </button>
@@ -834,28 +796,38 @@
               Passo 3: Como prefere ser atendido?
             </h4>
             <div class="space-y-3">
-              <label class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-magister-blue transition">
-                <input type="radio" name="atendimento" value="visita_presencial" checked class="mt-1 text-magister-blue focus:ring-magister-blue" />
+              <label
+                class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-magister-blue transition">
+                <input type="radio" name="atendimento" value="visita_presencial" checked
+                  class="mt-1 text-magister-blue focus:ring-magister-blue" />
                 <div>
-                  <p class="font-heading font-bold text-sm text-magister-navy">Quero agendar uma visita presencial guiada</p>
-                  <p class="text-xs text-slate-500">Conhecer as instalações, os professores e a coordenação pessoalmente.</p>
+                  <p class="font-heading font-bold text-sm text-magister-navy">Quero agendar uma visita presencial
+                    guiada</p>
+                  <p class="text-xs text-slate-500">Conhecer as instalações, os professores e a coordenação
+                    pessoalmente.</p>
                 </div>
               </label>
 
-              <label class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-magister-blue transition">
-                <input type="radio" name="atendimento" value="whatsapp_online" class="mt-1 text-magister-blue focus:ring-magister-blue" />
+              <label
+                class="flex items-start gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:border-magister-blue transition">
+                <input type="radio" name="atendimento" value="whatsapp_online"
+                  class="mt-1 text-magister-blue focus:ring-magister-blue" />
                 <div>
-                  <p class="font-heading font-bold text-sm text-magister-navy">Quero atendimento consultivo pelo WhatsApp</p>
-                  <p class="text-xs text-slate-500">Receber valores, grade curricular e tirar dúvidas com um consultor online.</p>
+                  <p class="font-heading font-bold text-sm text-magister-navy">Quero atendimento consultivo pelo
+                    WhatsApp</p>
+                  <p class="text-xs text-slate-500">Receber valores, grade curricular e tirar dúvidas com um consultor
+                    online.</p>
                 </div>
               </label>
             </div>
 
             <div class="pt-4 flex justify-between">
-              <button type="button" onclick="nextStep(2)" class="px-5 py-3 rounded-xl font-heading font-medium text-sm text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
+              <button type="button" onclick="nextStep(2)"
+                class="px-5 py-3 rounded-xl font-heading font-medium text-sm text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
                 Voltar
               </button>
-              <button type="submit" class="px-8 py-3.5 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-lg hover:shadow-glow-amber transition flex items-center gap-2">
+              <button type="submit"
+                class="px-8 py-3.5 rounded-lg font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition-colors flex items-center gap-2">
                 <i data-lucide="send" class="w-4 h-4"></i>
                 <span>Finalizar e Enviar Agendamento</span>
               </button>
@@ -870,10 +842,12 @@
           </div>
           <h3 class="font-heading font-extrabold text-2xl text-magister-navy">Agendamento Solicitado com Sucesso!</h3>
           <p class="text-slate-600 text-sm max-w-md mx-auto">
-            Nossa equipe de orientação pedagógica já recebeu sua solicitação e entrará em contato pelo WhatsApp informado nas próximas horas.
+            Nossa equipe de orientação pedagógica já recebeu sua solicitação e entrará em contato pelo WhatsApp
+            informado nas próximas horas.
           </p>
           <div class="pt-4">
-            <a id="btn-open-whatsapp-direct" href="#" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-heading font-bold text-sm text-white bg-magister-whatsapp hover:opacity-90 shadow-md transition">
+            <a id="btn-open-whatsapp-direct" href="#" target="_blank"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-heading font-bold text-sm text-white bg-magister-whatsapp hover:opacity-90 shadow-md transition">
               <i data-lucide="message-circle" class="w-5 h-5"></i>
               <span>Abrir WhatsApp da Secretaria Agora</span>
             </a>
@@ -884,13 +858,13 @@
   </section>
 
   <!-- FAQ ANTI-OBJEÇÕES -->
-  <section id="faq" class="py-20 bg-slate-50">
+  <section id="faq" class="py-20 bg-magister-stone">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <span class="inline-block px-3 py-1 rounded-full bg-magister-amberLight text-magister-amber font-heading font-bold text-xs uppercase tracking-wider mb-3">
+        <span class="text-xs font-semibold text-magister-blue uppercase tracking-[0.14em]">
           Tire suas Dúvidas
         </span>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-magister-navy tracking-tight">
+        <h2 class="font-serif font-medium text-3xl sm:text-4xl text-magister-navy tracking-tight mt-2">
           Perguntas Frequentes de Pais e Responsáveis
         </h2>
       </div>
@@ -898,45 +872,57 @@
       <div class="space-y-4">
         <!-- Item 1 -->
         <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-          <button onclick="toggleFaq(1)" class="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition">
+          <button onclick="toggleFaq(1)"
+            class="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition">
             <span>Como funciona o período integral no Instituto Magister?</span>
             <i id="faq-icon-1" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
           </button>
           <div id="faq-content-1" class="px-6 pb-4 text-sm text-slate-600 hidden">
-            Oferecemos modalidades de turno integral e semi-integral. O contraturno inclui almoço e lanches supervisionados por nutricionista, orientação de tarefas de casa (dever), atividades esportivas (futsal, judô, vôlei), oficinas de idiomas e artes.
+            Oferecemos modalidades de turno integral e semi-integral. O contraturno inclui almoço e lanches
+            supervisionados por nutricionista, orientação de tarefas de casa (dever), atividades esportivas (futsal,
+            judô, vôlei), oficinas de idiomas e artes.
           </div>
         </div>
 
         <!-- Item 2 -->
         <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-          <button onclick="toggleFaq(2)" class="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition">
+          <button onclick="toggleFaq(2)"
+            class="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition">
             <span>Qual a metodologia adotada para o Ensino Médio e ENEM?</span>
             <i id="faq-icon-2" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
           </button>
           <div id="faq-content-2" class="px-6 pb-4 text-sm text-slate-600 hidden">
-            Utilizamos material didático de ponta alinhado à Matriz de Referência do ENEM e aos principais vestibulares do país. Os alunos contam com simulados analíticos semanais com TRI, plantão exclusivo de correção de redações e mentoria de estudos individualizada.
+            Utilizamos material didático de ponta alinhado à Matriz de Referência do ENEM e aos principais vestibulares
+            do país. Os alunos contam com simulados analíticos semanais com TRI, plantão exclusivo de correção de
+            redações e mentoria de estudos individualizada.
           </div>
         </div>
 
         <!-- Item 3 -->
         <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-          <button onclick="toggleFaq(3)" class="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition">
+          <button onclick="toggleFaq(3)"
+            class="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition">
             <span>Como funciona a segurança e o controle de entrada e saída?</span>
             <i id="faq-icon-3" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
           </button>
           <div id="faq-content-3" class="px-6 pb-4 text-sm text-slate-600 hidden">
-            A escola possui portaria assistida, controle de acesso e catracas biométricas. Alunos da Educação Infantil e Fundamental I só são liberados para responsáveis previamente cadastrados com documento oficial ou autorização via aplicativo escolar.
+            A escola possui portaria assistida, controle de acesso e catracas biométricas. Alunos da Educação Infantil e
+            Fundamental I só são liberados para responsáveis previamente cadastrados com documento oficial ou
+            autorização via aplicativo escolar.
           </div>
         </div>
 
         <!-- Item 4 -->
         <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-          <button onclick="toggleFaq(4)" class="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition">
+          <button onclick="toggleFaq(4)"
+            class="w-full px-6 py-4 text-left font-heading font-bold text-base text-magister-navy flex items-center justify-between hover:bg-slate-50 transition">
             <span>Como agendar uma visita e conhecer as condições de matrícula?</span>
             <i id="faq-icon-4" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
           </button>
           <div id="faq-content-4" class="px-6 pb-4 text-sm text-slate-600 hidden">
-            Basta preencher o formulário acima nesta página ou clicar no botão do WhatsApp. Nossa equipe de relacionamento agendará um horário exclusivo com a coordenação pedagógica para apresentar a estrutura e as condições da campanha 2026/2027.
+            Basta preencher o formulário acima nesta página ou clicar no botão do WhatsApp. Nossa equipe de
+            relacionamento agendará um horário exclusivo com a coordenação pedagógica para apresentar a estrutura e as
+            condições da campanha 2026/2027.
           </div>
         </div>
       </div>
@@ -950,7 +936,8 @@
         <!-- Coluna 1: Marca -->
         <div class="space-y-4">
           <div class="flex items-center gap-3">
-            <img src="logo.png" alt="Instituto Magister de Ensino" class="h-12 w-auto object-contain bg-white/10 rounded-lg p-1" />
+            <img src="logo.png" alt="Instituto Magister de Ensino"
+              class="h-12 w-auto object-contain bg-white/10 rounded-lg p-1" />
             <div>
               <span class="block font-heading font-extrabold text-base text-white leading-tight">
                 Instituto Magister de Ensino
@@ -1004,24 +991,22 @@
             Sábado: 08h00 às 12h00
           </p>
           <div class="pt-3">
-            <button onclick="openBookingModal()" class="w-full py-2.5 rounded-lg font-heading font-bold text-xs text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition">
+            <button onclick="openBookingModal()"
+              class="w-full py-2.5 rounded-lg font-heading font-bold text-xs text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition">
               Agendar Visita Agora
             </button>
           </div>
         </div>
       </div>
 
-      <div class="pt-8 border-t border-white/10 text-center text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div
+        class="pt-8 border-t border-white/10 text-center text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
         <p>© 2026 Instituto Magister de Ensino. Todos os direitos reservados.</p>
 
         <p class="flex items-center gap-1.5 text-slate-400">
           <span>Desenvolvido por</span>
-          <a
-            href="https://gleiserwesley.com.br"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-magister-amber hover:text-white font-semibold transition inline-flex items-center gap-1 underline underline-offset-4"
-          >
+          <a href="https://gleiserwesley.com.br" target="_blank" rel="noopener noreferrer"
+            class="text-magister-amber hover:text-white font-semibold transition inline-flex items-center gap-1 underline underline-offset-4">
             <span>Gleiser Wesley</span>
             <i data-lucide="external-link" class="w-3 h-3 text-magister-amber"></i>
           </a>
@@ -1049,43 +1034,54 @@
   <!-- FLOATING WHATSAPP CTA -->
   <aside class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
     <!-- Balão de chamada rápida -->
-    <div class="hidden sm:block bg-white text-slate-800 text-xs font-semibold px-4 py-2 rounded-2xl shadow-xl border border-slate-100 animate-pulse-subtle">
+    <div
+      class="hidden sm:block bg-white text-slate-800 text-xs font-semibold px-4 py-2 rounded-2xl shadow-xl border border-slate-100 animate-pulse-subtle">
       👋 Dúvidas sobre vagas? <span class="text-magister-blue font-bold">Fale conosco!</span>
     </div>
 
     <!-- Botão Oficial WhatsApp -->
-    <a href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20estou%20na%20p%C3%A1gina%20do%20Instituto%20Magister%20e%20gostaria%20de%20falar%20com%20o%20atendimento." target="_blank" aria-label="Abrir WhatsApp" class="w-14 h-14 rounded-full bg-magister-whatsapp text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all">
+    <a href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20estou%20na%20p%C3%A1gina%20do%20Instituto%20Magister%20e%20gostaria%20de%20falar%20com%20o%20atendimento."
+      target="_blank" aria-label="Abrir WhatsApp"
+      class="w-14 h-14 rounded-full bg-magister-whatsapp text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all">
       <i data-lucide="message-circle" class="w-7 h-7 fill-current"></i>
     </a>
   </aside>
 
   <!-- MODAL DE AGENDAMENTO DE VISITA -->
-  <div id="booking-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
-      <button onclick="closeBookingModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
+  <div id="booking-modal"
+    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div
+      class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
+      <button onclick="closeBookingModal()"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
       <div class="text-center mb-6">
-        <div class="w-12 h-12 rounded-2xl bg-magister-amberLight text-magister-amber flex items-center justify-center mx-auto mb-3">
+        <div
+          class="w-12 h-12 rounded-2xl bg-magister-amberLight text-magister-amber flex items-center justify-center mx-auto mb-3">
           <i data-lucide="calendar" class="w-6 h-6"></i>
         </div>
         <h3 class="font-heading font-extrabold text-2xl text-magister-navy">Agendar Visita Pedagógica</h3>
-        <p class="text-xs sm:text-sm text-slate-500 mt-1">Nossa coordenação apresentará toda a estrutura da escola para sua família.</p>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Nossa coordenação apresentará toda a estrutura da escola para
+          sua família.</p>
       </div>
 
       <form onsubmit="handleModalSubmit(event)" class="space-y-4">
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Seu Nome Completo *</label>
-          <input type="text" id="modal-nome" required placeholder="Ex: Carlos Eduardo Melo" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
+          <input type="text" id="modal-nome" required placeholder="Ex: Carlos Eduardo Melo"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">WhatsApp com DDD *</label>
-          <input type="tel" id="modal-whatsapp" required placeholder="(86) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
+          <input type="tel" id="modal-whatsapp" required placeholder="(86) 99999-9999"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue" />
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1">Ciclo de Interesse *</label>
-          <select id="modal-ciclo" required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue text-slate-700">
+          <select id="modal-ciclo" required
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-magister-blue/20 focus:border-magister-blue text-slate-700">
             <option value="Educação Infantil">Educação Infantil (2 a 5 anos)</option>
             <option value="Fundamental I">Ensino Fundamental I (1º ao 5º ano)</option>
             <option value="Fundamental II">Ensino Fundamental II (6º ao 9º ano)</option>
@@ -1094,7 +1090,8 @@
           </select>
         </div>
 
-        <button type="submit" class="w-full py-3.5 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-md transition flex items-center justify-center gap-2">
+        <button type="submit"
+          class="w-full py-3.5 rounded-xl font-heading font-bold text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-md transition flex items-center justify-center gap-2">
           <span>Confirmar e Conversar no WhatsApp</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>
@@ -1103,9 +1100,11 @@
   </div>
 
   <!-- BANNER DE COOKIES LGPD -->
-  <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 sm:left-auto sm:right-6 sm:max-w-md z-50 bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-slate-200 text-slate-800 hidden">
+  <div id="cookie-banner"
+    class="fixed bottom-6 left-6 right-6 sm:left-auto sm:right-6 sm:max-w-md z-50 bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-2xl border border-slate-200 text-slate-800 hidden">
     <div class="flex items-start gap-3">
-      <div class="w-10 h-10 rounded-xl bg-magister-amberLight text-magister-amber flex items-center justify-center shrink-0">
+      <div
+        class="w-10 h-10 rounded-xl bg-magister-amberLight text-magister-amber flex items-center justify-center shrink-0">
         <i data-lucide="cookie" class="w-5 h-5"></i>
       </div>
       <div class="space-y-1">
@@ -1114,22 +1113,29 @@
           <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-magister-blue uppercase">LGPD</span>
         </h4>
         <p class="text-xs text-slate-600 leading-relaxed">
-          Utilizamos cookies essenciais para o funcionamento seguro da página e tecnologias semelhantes para personalizar conteúdos e analisar o tráfego institucional, de acordo com nossa 
-          <button onclick="openPrivacyModal()" class="text-magister-blue font-semibold underline hover:text-magister-dark">Política de Privacidade</button> e 
-          <button onclick="openTermsModal()" class="text-magister-blue font-semibold underline hover:text-magister-dark">Termos de Uso</button>.
+          Utilizamos cookies essenciais para o funcionamento seguro da página e tecnologias semelhantes para
+          personalizar conteúdos e analisar o tráfego institucional, de acordo com nossa
+          <button onclick="openPrivacyModal()"
+            class="text-magister-blue font-semibold underline hover:text-magister-dark">Política de Privacidade</button>
+          e
+          <button onclick="openTermsModal()"
+            class="text-magister-blue font-semibold underline hover:text-magister-dark">Termos de Uso</button>.
         </p>
       </div>
     </div>
     <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
-      <button onclick="openCookieConfig()" class="text-xs font-semibold text-slate-600 hover:text-magister-blue flex items-center gap-1.5 transition py-1.5">
+      <button onclick="openCookieConfig()"
+        class="text-xs font-semibold text-slate-600 hover:text-magister-blue flex items-center gap-1.5 transition py-1.5">
         <i data-lucide="settings" class="w-3.5 h-3.5"></i>
         <span>Configurar</span>
       </button>
       <div class="flex items-center gap-2">
-        <button onclick="acceptEssentialCookies()" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition">
+        <button onclick="acceptEssentialCookies()"
+          class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition">
           Apenas Essenciais
         </button>
-        <button onclick="acceptAllCookies()" class="px-4 py-2 rounded-xl text-xs font-heading font-bold text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-sm transition">
+        <button onclick="acceptAllCookies()"
+          class="px-4 py-2 rounded-xl text-xs font-heading font-bold text-magister-navy bg-magister-amber hover:bg-magister-amberHover shadow-sm transition">
           Aceitar Todos
         </button>
       </div>
@@ -1137,9 +1143,11 @@
   </div>
 
   <!-- MODAL DE CONFIGURAÇÃO DE COOKIES -->
-  <div id="cookie-config-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+  <div id="cookie-config-modal"
+    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative text-slate-800">
-      <button onclick="closeCookieConfig()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
+      <button onclick="closeCookieConfig()"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
@@ -1160,27 +1168,32 @@
             <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Sempre Ativo</span>
           </div>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Necessários para o funcionamento seguro da página, proteção contra envio de spam nos formulários e armazenamento do consentimento.
+            Necessários para o funcionamento seguro da página, proteção contra envio de spam nos formulários e
+            armazenamento do consentimento.
           </p>
         </div>
 
         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
           <div class="flex items-center justify-between mb-1">
             <h4 class="font-heading font-bold text-sm text-magister-navy">Cookies Analíticos & Desempenho</h4>
-            <input type="checkbox" id="cookie-analytics" checked class="w-4 h-4 text-magister-blue rounded border-slate-300 focus:ring-magister-blue cursor-pointer" />
+            <input type="checkbox" id="cookie-analytics" checked
+              class="w-4 h-4 text-magister-blue rounded border-slate-300 focus:ring-magister-blue cursor-pointer" />
           </div>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Permitem mensurar de forma anônima as visitas e as fontes de tráfego para aprimorar a experiência das famílias.
+            Permitem mensurar de forma anônima as visitas e as fontes de tráfego para aprimorar a experiência das
+            famílias.
           </p>
         </div>
 
         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
           <div class="flex items-center justify-between mb-1">
             <h4 class="font-heading font-bold text-sm text-magister-navy">Cookies de Marketing & Conversão</h4>
-            <input type="checkbox" id="cookie-marketing" checked class="w-4 h-4 text-magister-amber rounded border-slate-300 focus:ring-magister-amber cursor-pointer" />
+            <input type="checkbox" id="cookie-marketing" checked
+              class="w-4 h-4 text-magister-amber rounded border-slate-300 focus:ring-magister-amber cursor-pointer" />
           </div>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Utilizados para veicular anúncios relevantes sobre as matrículas do Instituto Magister em redes sociais e buscadores.
+            Utilizados para veicular anúncios relevantes sobre as matrículas do Instituto Magister em redes sociais e
+            buscadores.
           </p>
         </div>
       </div>
@@ -1189,7 +1202,8 @@
         <button onclick="acceptAllCookies()" class="text-xs font-semibold text-slate-600 hover:text-magister-blue">
           Aceitar Todos
         </button>
-        <button onclick="saveCustomCookies()" class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs sm:text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2 shadow-sm">
+        <button onclick="saveCustomCookies()"
+          class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs sm:text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition flex items-center gap-2 shadow-sm">
           <i data-lucide="check" class="w-4 h-4"></i>
           <span>Salvar Preferências</span>
         </button>
@@ -1198,47 +1212,60 @@
   </div>
 
   <!-- MODAL DE POLÍTICA DE PRIVACIDADE & LGPD -->
-  <div id="privacy-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative text-slate-800 flex flex-col max-h-[85vh]">
+  <div id="privacy-modal"
+    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div
+      class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative text-slate-800 flex flex-col max-h-[85vh]">
       <div class="flex items-center justify-between pb-4 border-b border-slate-100">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-xl bg-blue-50 text-magister-blue flex items-center justify-center">
             <i data-lucide="shield-check" class="w-6 h-6"></i>
           </div>
           <div>
-            <h3 class="font-heading font-extrabold text-lg sm:text-xl text-magister-navy">Política de Privacidade & LGPD</h3>
+            <h3 class="font-heading font-extrabold text-lg sm:text-xl text-magister-navy">Política de Privacidade & LGPD
+            </h3>
             <p class="text-xs text-slate-500">Instituto Magister de Ensino • Teresina - PI</p>
           </div>
         </div>
-        <button onclick="closePrivacyModal()" class="w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
+        <button onclick="closePrivacyModal()"
+          class="w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
       <div class="overflow-y-auto py-4 space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed pr-2">
         <div class="p-3.5 bg-blue-50/70 border border-blue-100 rounded-xl text-magister-navy text-xs">
-          <strong>Compromisso Institucional:</strong> O Instituto Magister de Ensino zela pela privacidade e segurança dos dados dos alunos e responsáveis em total observância à <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD)</strong>.
+          <strong>Compromisso Institucional:</strong> O Instituto Magister de Ensino zela pela privacidade e segurança
+          dos dados dos alunos e responsáveis em total observância à <strong>Lei Geral de Proteção de Dados (Lei nº
+            13.709/2018 - LGPD)</strong>.
         </div>
         <section class="space-y-1">
           <h4 class="font-heading font-bold text-sm text-magister-navy">1. Controlador dos Dados Pessoais</h4>
-          <p>O controlador é o <strong>Instituto Magister de Ensino</strong>, com sede em Teresina - PI, responsável pelas diretrizes de tratamento de dados.</p>
+          <p>O controlador é o <strong>Instituto Magister de Ensino</strong>, com sede em Teresina - PI, responsável
+            pelas diretrizes de tratamento de dados.</p>
         </section>
         <section class="space-y-1">
           <h4 class="font-heading font-bold text-sm text-magister-navy">2. Finalidade da Coleta de Dados</h4>
-          <p>Os dados informados nos formulários (nome do responsável, WhatsApp, e-mail e dados do aluno) têm por finalidade exclusiva viabilizar o agendamento da visita pedagógica e o envio de propostas de matrícula.</p>
+          <p>Os dados informados nos formulários (nome do responsável, WhatsApp, e-mail e dados do aluno) têm por
+            finalidade exclusiva viabilizar o agendamento da visita pedagógica e o envio de propostas de matrícula.</p>
         </section>
         <section class="space-y-1">
-          <h4 class="font-heading font-bold text-sm text-magister-navy">3. Proteção aos Dados de Crianças e Adolescentes</h4>
-          <p>O tratamento de dados de menores é realizado em consonância com o Artigo 14 da LGPD, mediante consentimento explícito e de melhor interesse fornecido pelos pais ou responsável legal.</p>
+          <h4 class="font-heading font-bold text-sm text-magister-navy">3. Proteção aos Dados de Crianças e Adolescentes
+          </h4>
+          <p>O tratamento de dados de menores é realizado em consonância com o Artigo 14 da LGPD, mediante consentimento
+            explícito e de melhor interesse fornecido pelos pais ou responsável legal.</p>
         </section>
         <section class="space-y-1">
           <h4 class="font-heading font-bold text-sm text-magister-navy">4. Direitos do Titular (Art. 18 LGPD)</h4>
-          <p>O titular tem direito de solicitar a confirmação, o acesso, a correção ou a exclusão de seus dados a qualquer momento via Secretaria Escolar ou e-mail: <strong class="text-magister-blue">privacidade@magisterteresina.com.br</strong>.</p>
+          <p>O titular tem direito de solicitar a confirmação, o acesso, a correção ou a exclusão de seus dados a
+            qualquer momento via Secretaria Escolar ou e-mail: <strong
+              class="text-magister-blue">privacidade@magisterteresina.com.br</strong>.</p>
         </section>
       </div>
 
       <div class="pt-4 border-t border-slate-100 flex justify-end">
-        <button onclick="closePrivacyModal()" class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs sm:text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition shadow-sm">
+        <button onclick="closePrivacyModal()"
+          class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs sm:text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition shadow-sm">
           Entendi e Concordo
         </button>
       </div>
@@ -1247,7 +1274,8 @@
 
   <!-- MODAL DE TERMOS DE USO -->
   <div id="terms-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative text-slate-800 flex flex-col max-h-[85vh]">
+    <div
+      class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative text-slate-800 flex flex-col max-h-[85vh]">
       <div class="flex items-center justify-between pb-4 border-b border-slate-100">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-xl bg-amber-50 text-magister-amber flex items-center justify-center">
@@ -1258,7 +1286,8 @@
             <p class="text-xs text-slate-500">Instituto Magister de Ensino • Teresina - PI</p>
           </div>
         </div>
-        <button onclick="closeTermsModal()" class="w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
+        <button onclick="closeTermsModal()"
+          class="w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
@@ -1266,15 +1295,18 @@
       <div class="overflow-y-auto py-4 space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed pr-2">
         <section class="space-y-1">
           <h4 class="font-heading font-bold text-sm text-magister-navy">1. Aceitação e Escopo</h4>
-          <p>O acesso a esta plataforma constitui aceitação dos presentes Termos de Uso para agendamento de visita escolar e consulta de condições de matrícula 2026/2027.</p>
+          <p>O acesso a esta plataforma constitui aceitação dos presentes Termos de Uso para agendamento de visita
+            escolar e consulta de condições de matrícula 2026/2027.</p>
         </section>
         <section class="space-y-1">
           <h4 class="font-heading font-bold text-sm text-magister-navy">2. Veracidade Cadastral</h4>
-          <p>O usuário garante a autenticidade das informações fornecidas e a titularidade dos contatos para retorno da coordenação.</p>
+          <p>O usuário garante a autenticidade das informações fornecidas e a titularidade dos contatos para retorno da
+            coordenação.</p>
         </section>
         <section class="space-y-1">
           <h4 class="font-heading font-bold text-sm text-magister-navy">3. Propriedade Intelectual</h4>
-          <p>Marca, logos, fotografias e conteúdos pedagógicos são de titularidade exclusiva do Instituto Magister de Ensino.</p>
+          <p>Marca, logos, fotografias e conteúdos pedagógicos são de titularidade exclusiva do Instituto Magister de
+            Ensino.</p>
         </section>
         <section class="space-y-1">
           <h4 class="font-heading font-bold text-sm text-magister-navy">4. Legislação e Foro</h4>
@@ -1283,7 +1315,8 @@
       </div>
 
       <div class="pt-4 border-t border-slate-100 flex justify-end">
-        <button onclick="closeTermsModal()" class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs sm:text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition shadow-sm">
+        <button onclick="closeTermsModal()"
+          class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs sm:text-sm text-magister-navy bg-magister-amber hover:bg-magister-amberHover transition shadow-sm">
           Concordo com os Termos
         </button>
       </div>
@@ -1305,7 +1338,7 @@
             if (banner) banner.classList.remove('hidden');
           }, 800);
         }
-      } catch (e) {}
+      } catch (e) { }
     }
     initCookieConsent();
 
@@ -1326,7 +1359,7 @@
     function saveConsent(data) {
       try {
         localStorage.setItem('magister_cookie_consent', JSON.stringify(data));
-      } catch (e) {}
+      } catch (e) { }
       document.getElementById('cookie-banner').classList.add('hidden');
       closeCookieConfig();
     }
@@ -1378,7 +1411,7 @@
           return;
         }
       }
-      
+
       document.getElementById('step-1').classList.add('hidden');
       document.getElementById('step-2').classList.add('hidden');
       document.getElementById('step-3').classList.add('hidden');
@@ -1409,7 +1442,7 @@
       const atendimento = document.querySelector('input[name="atendimento"]:checked').value;
 
       const mensagem = `Olá, gostaria de agendar uma visita ao Instituto Magister!%0A%0A*Responsável:* ${encodeURIComponent(nome)}%0A*WhatsApp:* ${encodeURIComponent(whatsapp)}%0A*Série Pretendida:* ${encodeURIComponent(serie)}%0A*Turno:* ${encodeURIComponent(turno)}%0A*Tipo de Atendimento:* ${encodeURIComponent(atendimento)}`;
-      
+
       const zapUrl = `https://wa.me/5586999999999?text=${mensagem}`;
       document.getElementById('btn-open-whatsapp-direct').href = zapUrl;
 
@@ -1452,7 +1485,7 @@
 
       const msg = `Olá! Meu nome é ${encodeURIComponent(nome)}, meu contato é ${encodeURIComponent(zap)} e tenho interesse em agendar uma visita para o ciclo ${encodeURIComponent(ciclo)} no Instituto Magister.`;
       const url = `https://wa.me/5586999999999?text=${msg}`;
-      
+
       closeBookingModal();
       window.open(url, '_blank');
     }
@@ -1471,4 +1504,5 @@
     }
   </script>
 </body>
+
 </html>
