@@ -13,6 +13,7 @@ import {
   Trophy,
   Sparkles,
 } from "lucide-react";
+import { whatsappLink, WHATSAPP_MESSAGES } from "@/lib/contact";
 
 interface HeroProps {
   onOpenBooking: (ciclo?: string) => void;
@@ -124,7 +125,7 @@ export function Hero({ onOpenBooking }: HeroProps) {
               <motion.a
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20quero%20conversar%20com%20um%20orientador%20do%20Instituto%20Magister%20de%20Ensino."
+                href={whatsappLink(WHATSAPP_MESSAGES.hero)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl font-heading font-semibold text-base text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all hover:border-white/40"

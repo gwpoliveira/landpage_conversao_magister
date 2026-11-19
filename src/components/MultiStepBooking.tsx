@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Send, Check, MessageCircle } from "lucide-react";
+import { whatsappLink } from "@/lib/contact";
 
 export function MultiStepBooking() {
   const [step, setStep] = useState(1);
@@ -32,23 +33,22 @@ export function MultiStepBooking() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mensagem = `Olá, gostaria de agendar uma visita ao Instituto Magister de Ensino!%0A%0A*Responsável:* ${encodeURIComponent(
-      nome
-    )}%0A*WhatsApp:* ${encodeURIComponent(
-      whatsapp
-    )}%0A*Aluno:* ${encodeURIComponent(
-      nomeAluno || "Não informado"
-    )}%0A*Série Pretendida:* ${encodeURIComponent(
-      serie
-    )}%0A*Turno:* ${encodeURIComponent(
-      turno
-    )}%0A*Tipo de Atendimento:* ${encodeURIComponent(
-      tipoAtendimento === "visita_presencial"
-        ? "Visita Presencial Guiada"
-        : "Consultoria via WhatsApp"
-    )}`;
+    const mensagem = [
+      "Olá, gostaria de agendar uma visita ao Instituto Magister de Ensino!",
+      "",
+      `*Responsável:* ${nome}`,
+      `*WhatsApp:* ${whatsapp}`,
+      `*Aluno:* ${nomeAluno || "Não informado"}`,
+      `*Série Pretendida:* ${serie}`,
+      `*Turno:* ${turno}`,
+      `*Tipo de Atendimento:* ${
+        tipoAtendimento === "visita_presencial"
+          ? "Visita Presencial Guiada"
+          : "Consultoria via WhatsApp"
+      }`,
+    ].join("\n");
 
-    const url = `https://wa.me/5586999999999?text=${mensagem}`;
+    const url = whatsappLink(mensagem);
     setWhatsappUrl(url);
     setIsSubmitted(true);
 

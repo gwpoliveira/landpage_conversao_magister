@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { SITE_URL, WHATSAPP_E164 } from "@/lib/contact";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,6 +16,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   title: "Instituto Magister de Ensino | Teresina - PI | Matrículas Abertas",
   description:
     "Do acolhimento na Educação Infantil à alta performance no Ensino Médio e ENEM. Conheça o Instituto Magister em Teresina. Agende uma visita guiada para sua família.",
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
     title: "Instituto Magister de Ensino | Matrículas Abertas em Teresina",
     description:
       "Onde o acolhimento transforma o aprendizado e o futuro acontece. Agende uma visita pedagógica guiada.",
-    url: "https://magisterteresina.com.br",
+    url: SITE_URL,
     siteName: "Instituto Magister de Ensino",
     locale: "pt_BR",
     type: "website",
@@ -52,15 +55,15 @@ export default function RootLayout({
     "@type": "School",
     "name": "Instituto Magister de Ensino",
     "alternateName": "Colégio Magister",
-    "url": "https://magisterteresina.com.br",
-    "logo": "https://magisterteresina.com.br/logo.png",
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/logo.png`,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Teresina",
       "addressRegion": "PI",
       "addressCountry": "BR"
     },
-    "telephone": "+55-86-3232-1500",
+    "telephone": WHATSAPP_E164,
     "priceRange": "$$",
     "description": "Instituição de ensino da Educação Infantil ao Ensino Médio e Pré-Vestibular com alta performance no ENEM em Teresina, Piauí."
   };

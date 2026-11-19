@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, ArrowRight, MessageCircle, Calendar } from "lucide-react";
+import { whatsappLink, WHATSAPP_MESSAGES } from "@/lib/contact";
 
 interface NavbarProps {
   onOpenBooking: () => void;
@@ -80,7 +81,7 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
           {/* Action CTAs */}
           <div className="flex items-center gap-3">
             <a
-              href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20matr%C3%ADculas%20do%20Instituto%20Magister."
+              href={whatsappLink(WHATSAPP_MESSAGES.navbar)}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold text-magister-navy bg-slate-100 hover:bg-slate-200 transition"

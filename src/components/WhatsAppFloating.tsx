@@ -1,4 +1,5 @@
 import { MessageCircle } from "lucide-react";
+import { whatsappLink, WHATSAPP_MESSAGES } from "@/lib/contact";
 
 export function WhatsAppFloating() {
   return (
@@ -9,7 +10,7 @@ export function WhatsAppFloating() {
       </div>
 
       <a
-        href="https://wa.me/5586999999999?text=Ol%C3%A1%2C%20estou%20na%20p%C3%A1gina%20do%20Instituto%20Magister%20e%20gostaria%20de%20falar%20com%20o%20atendimento."
+        href={whatsappLink(WHATSAPP_MESSAGES.floating)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Abrir WhatsApp"

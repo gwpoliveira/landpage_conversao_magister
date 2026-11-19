@@ -31,3 +31,27 @@
 - [ ] **Formulário de Captação**: Multi-step com validação de telefone brasileiro (DDD 86).
 - [ ] **SEO Local Teresina**: Schema.org de instituição de ensino com geolocalização.
 - [ ] **Auditoria Guardian**: Emissão formal do Selo de Segurança.
+
+---
+
+## 3. AUDITORIA DE MELHORIAS — 2026-11-19 (Maestro)
+
+**Quality Gates reavaliados:** QA 🔴 (0% de cobertura, nenhum teste) · Guardian 🔴 (sem Selo; `npm audit`: 2 high — zod <4.6.6, postcss interno do next) · SEO 🟡 (domínio divergente) · LGPD 🟡 (cookies não-essenciais pré-marcados).
+
+Backlog priorizado:
+- [x] **P0** (2026-11-19) Substituir o WhatsApp placeholder `5586999999999` (6 pontos no `src/`) por constante única em `src/lib/contact.ts`.
+- [x] **P0** (2026-11-19) Unificar domínio → `estude.institutomagisterpi.com.br` (fonte única `SITE_URL`): metadata/JSON-LD usam `magisterteresina.com.br`, deploy usa `estude.institutomagisterpi.com.br`. Adicionar `metadataBase`.
+- [ ] **P0** Telefone `(86) 3232-1500` e números do StatsBar/depoimentos: validar com a escola (risco CDC/CONAR se fictícios).
+- [ ] **P1** Portar o redesign do commit `377229f` (`index.html`: Newsreader + DM Sans + fotos reais) para o app Next.js — hoje o app não usa `public/images/`.
+- [ ] **P1** Formulários: usar o `LeadSchema` (Zod) já existente no lugar de `alert()`, máscara de telefone, erros inline com `aria-describedby`.
+- [ ] **P1** `page.tsx` inteiro é `"use client"`: mover estado dos modais para um provider e manter seções como Server Components.
+- [ ] **P1** `prefers-reduced-motion` ausente (nenhum `useReducedMotion`/`MotionConfig`).
+- [ ] **P1** Cookies: `analytics`/`marketing` iniciam `true` → devem iniciar `false` (LGPD art. 8º, consentimento livre).
+- [ ] **P1** Nginx: bloco 443 com HTTP/2, HSTS, CSP; remover `X-XSS-Protection`; Brotli.
+- [ ] **P2** `sitemap.ts`, `robots.ts`, OG image, JSON-LD com `geo`, `openingHours`, `sameAs`.
+- [ ] **P2** Limpeza: `images/` duplicado na raiz, `deploy.sh`/`update.sh` duplicados e divergentes, dois lockfiles (npm + pnpm).
+- [ ] **P2** Suíte Vitest + Playwright (≥85%) e CI no GitHub Actions.
+
+- [ ] **P0** E-mails `contato@`/`privacidade@magisterteresina.com.br` (Footer, PrivacyModal) usam domínio antigo: confirmar caixas reais no domínio oficial.
+
+**Decisão (2026-11-19):** contato centralizado em `src/lib/contact.ts` (`SITE_URL`, `WHATSAPP_NUMBER` 5586981710771, `whatsappLink()` com `encodeURIComponent` em toda mensagem). JSON-LD `telephone` passa a usar o WhatsApp oficial; telefone fixo (86) 3232-1500 segue pendente de confirmação.

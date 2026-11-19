@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, ArrowRight } from "lucide-react";
+import { whatsappLink } from "@/lib/contact";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -27,14 +28,9 @@ export function BookingModal({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg = `Olá! Meu nome é ${encodeURIComponent(
-      nome
-    )}, meu contato é ${encodeURIComponent(
-      whatsapp
-    )} e gostaria de agendar uma visita guiada para o ciclo ${encodeURIComponent(
-      ciclo
-    )} no Instituto Magister de Ensino.`;
-    const url = `https://wa.me/5586999999999?text=${msg}`;
+    const url = whatsappLink(
+      `Olá! Meu nome é ${nome}, meu contato é ${whatsapp} e gostaria de agendar uma visita guiada para o ciclo ${ciclo} no Instituto Magister de Ensino.`
+    );
     onClose();
     window.open(url, "_blank");
   };
